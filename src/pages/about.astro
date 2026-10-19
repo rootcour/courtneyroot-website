@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site';
+---
+<Base title="About" description="About Courtney Root, security engineer focused on AI and cloud security.">
+  <p class="eyebrow">About</p>
+  <div class="about-intro">
+    <img src="/headshot.webp" alt="Courtney Root" width="240" height="240" class="headshot" />
+    <div>
+      <h1>Hi, I'm Courtney.</h1>
+      <p class="lede">
+        I'm a cybersecurity engineer with four years securing cloud products used by customers at scale.
+        These days I spend most of my time thinking about what AI changes for attackers, defenders, and
+        the people who have to decide what to fund.
+      </p>
+    </div>
+  </div>
+  <p>
+    I hold a Master of Cybersecurity from Georgia Tech, where I studied everything from incident response
+    to cyber deterrence policy. Now I'm finishing an MBA at UC Berkeley's Haas School of Business (Class of 2027),
+    which is where the "security as a business decision" thread in my writing comes from.
+  </p>
+  <p>
+    I'm a big believer in capture-the-flag events as an on-ramp into the field, and I give back by reviewing talk submissions for the Women in Cybersecurity (WiCyS) 2027 conference.
+  </p>
+
+  <h2 id="bios">Bios for organizers</h2>
+  <h3>Short</h3>
+  <blockquote>
+    Courtney Root is a cybersecurity engineer focused on AI and cloud security, and an MBA candidate at UC Berkeley Haas.
+  </blockquote>
+  <h3>Long</h3>
+  <blockquote>
+    Courtney Root is a cybersecurity engineer with four years of experience securing cloud products for customers.
+    Courtney's work and writing focus on securing AI systems, using AI to strengthen defense, and translating
+    security risk for business leaders. Courtney holds a Master of Cybersecurity from Georgia Tech, is completing
+    an MBA at UC Berkeley's Haas School of Business (Class of 2027), and serves as a program reviewer for the
+    WiCyS 2027 conference.
+  </blockquote>
+  <p class="muted">A high-resolution headshot is available <a href="/og-image.jpg">here</a>.</p>
+
+  <h2>Elsewhere</h2>
+  <ul>
+    <li><a href={SITE.links.linkedin}>LinkedIn</a></li>
+    <li><a href={SITE.links.github}>GitHub</a></li>
+    <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+  </ul>
+</Base>

@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site';
+
+// Add entries as you give talks: { event, title, date, link? }
+const talks: { event: string; title: string; date: string; link?: string }[] = [];
+---
+<Base title="Speaking" description="Talks and panels on AI security, cloud security, and security leadership.">
+  <p class="eyebrow">Speaking</p>
+  <h1>Talks &amp; panels</h1>
+  <p class="lede">I speak with engineering, security and leadership audiences about what AI changes in security.</p>
+
+  <h2>Topics</h2>
+  <ul>
+    <li><strong>Threat modeling AI agents.</strong> What changes when software has tools, memory and permissions, and the controls that matter.</li>
+    <li><strong>AI in the SOC, honestly.</strong> Where AI helps defenders today and where it adds risk.</li>
+    <li><strong>Security for the boardroom.</strong> Turning technical risk into decisions leaders can make.</li>
+    <li><strong>Getting your first CFP accepted.</strong> Lessons from the reviewer's side of the table.</li>
+  </ul>
+
+  <h2>Past &amp; upcoming</h2>
+  {talks.length === 0 ? (
+    <p class="muted">Upcoming talks will be listed here.</p>
+  ) : (
+    <ul class="posts">
+      {talks.map((t) => (
+        <li><span class="meta">{t.date} · {t.event}</span><br />{t.link ? <a href={t.link}>{t.title}</a> : t.title}</li>
+      ))}
+    </ul>
+  )}
+
+  <h2>Invite me</h2>
+  <p>For conferences, podcasts, panels or guest lectures, email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Short and long bios are on the <a href="/about/#bios">About page</a>.</p>
+</Base>

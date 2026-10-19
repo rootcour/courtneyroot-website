@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { PILLARS } from '../../site';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { timeZone: 'UTC', year: 'numeric', month: 'short', day: 'numeric' });
+---
+<Base title="Writing" description="Essays on securing AI systems, AI for defenders, and security leadership.">
+  <p class="eyebrow">Writing</p>
+  <h1>Notes from the intersection of AI and security</h1>
+  <p class="muted">Subscribe via <a href="/rss.xml">RSS</a>.</p>
+  {posts.length === 0 ? (
+    <p class="muted">First posts are on the way.</p>
+  ) : (
+    <ul class="posts">
+      {posts.map((p) => (
+        <li>
+          <span class="meta">{fmt(p.data.date)} · {PILLARS[p.data.pillar].label}{p.data.archived && ' · archive'}</span><br />
+          <a href={`/writing/${p.id}/`}>{p.data.title}</a>
+          <p>{p.data.description}</p>
+        </li>
+      ))}
+    </ul>
+  )}
+</Base>

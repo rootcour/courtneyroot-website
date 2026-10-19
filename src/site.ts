@@ -1,0 +1,32 @@
+// Central place for names, links and pillar labels. Edit here, not in every page.
+export const SITE = {
+  name: 'Courtney Root',
+  title: 'Courtney Root — AI & Cloud Security',
+  description:
+    'Security engineer writing about securing AI systems, using AI for defense, and translating security risk for leaders.',
+  email: 'hello@courtneyroot.dev', // TODO: confirm the address you want public
+  links: {
+    linkedin: 'https://www.linkedin.com/in/TODO',
+    github: 'https://github.com/TODO',
+  },
+};
+
+export const PILLARS: Record<string, { label: string; blurb: string }> = {
+  'securing-ai': {
+    label: 'Securing AI systems',
+    blurb: 'Threat models for agents and LLM apps: prompt injection, tool permissions, model supply chain.',
+  },
+  'ai-for-defenders': {
+    label: 'AI for defenders',
+    blurb: 'What actually works when security teams put AI into detection, triage and code review.',
+  },
+  'security-leadership': {
+    label: 'Security as a business decision',
+    blurb: 'Translating risk into language boards and executives can act on.',
+  },
+  'post-quantum': {
+    label: 'Post-quantum migration',
+    blurb: 'Practical crypto-agility before "harvest now, decrypt later" becomes a breach.',
+  },
+  general: { label: 'Notes', blurb: '' },
+};

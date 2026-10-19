@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { PILLARS } from '../../site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { timeZone: 'UTC', year: 'numeric', month: 'long', day: 'numeric' });
+---
+<Base title={post.data.title} description={post.data.description}>
+  <article>
+    <p class="meta">
+      {fmt(post.data.date)}{post.data.updated && ` · updated ${fmt(post.data.updated)}`} · {PILLARS[post.data.pillar].label}
+    </p>
+    <h1>{post.data.title}</h1>
+    {post.data.archived && (
+      <div class="archive-note">
+        <p>{post.data.archiveNote ?? 'From the archive. I wrote this earlier in my career and have kept it largely as published.'}</p>
+      </div>
+    )}
+    <Content />
+  </article>
+  <hr />
+  <p><a href="/writing/">← All writing</a></p>
+</Base>
