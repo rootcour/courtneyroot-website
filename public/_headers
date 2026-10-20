@@ -1,6 +1,9 @@
 # Cloudflare Pages reads this file and applies these headers to every response.
+# Prompt injection game: challenges.cloudflare.com (script-src, frame-src) is Cloudflare Turnstile,
+# and the workers.dev address (connect-src) is the game server. Replace YOUR-SUBDOMAIN with your
+# Workers subdomain, and keep it matching GAME.apiUrl in src/site.ts.
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://prompt-injection-game.YOUR-SUBDOMAIN.workers.dev; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
