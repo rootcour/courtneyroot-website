@@ -1,16 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
 import { SITE } from '../site';
+import Email from '../components/Email.astro';
 ---
-<Base title="About" description="About Courtney Root, security engineer focused on AI and cloud security.">
+<Base title="About" description="About Courtney Root, a cybersecurity engineer with 8+ years in the field, focused on AI and cloud security.">
   <div class="about-intro">
     <img src="/headshot.webp" alt="Courtney Root" width="220" height="275" class="headshot" />
     <div class="prose">
       <h1>Hi, I'm Courtney.</h1>
       <p class="lede">
-        I'm a cybersecurity engineer with four years securing cloud products used by customers at scale.
-        These days I spend most of my time thinking about what AI changes for attackers, defenders, and
-        the people who have to decide what to fund.
+        I've worked in cybersecurity for more than eight years, including the last four securing cloud products
+        used by customers at scale. These days I spend most of my time thinking about what AI changes for attackers,
+        defenders, and the people who have to decide where to invest.
       </p>
       <p>
         I hold a Master of Cybersecurity from Georgia Tech, where I studied everything from incident response
@@ -18,35 +19,93 @@ import { SITE } from '../site';
         which is where the "security as a business decision" thread in my writing comes from.
       </p>
       <p>
-        I'm a big believer in capture-the-flag events as an on-ramp into the field, and I give back by reviewing
-        talk submissions for the Women in Cybersecurity (WiCyS) 2027 conference.
+        I'm a big believer in capture-the-flag events as an on-ramp into the field. Outside of work, I spend a lot of
+        my time volunteering, which you can read about <a href="#volunteering">below</a>.
       </p>
     </div>
   </div>
 
   <div class="prose">
+    <h2>What I believe about AI and security</h2>
+    <div class="thesis thesis-about">
+      <p class="thesis-lead">
+        AI agents turn every input into a potential instruction, so security has to shift from protecting data
+        to governing what software is allowed to do.
+      </p>
+      <p class="thesis-follow">
+        That only works when business, engineering and security set those limits together, so customers stay
+        protected and teams keep moving fast.
+      </p>
+    </div>
+    <p>Everything I write comes back to that idea. <a href="/writing/">Read the writing</a>.</p>
+
+    <h2 id="volunteering">Volunteering</h2>
+    <p>Giving back is a big part of my life. Here's where I spend that time.</p>
+
+    <div class="volunteer">
+      <div class="volunteer-item">
+        <h3><a href="https://www.sfmfoodbank.org/">SF-Marin Food Bank</a></h3>
+        <p class="volunteer-when">Every month</p>
+        <p>
+          I pack boxes for the food bank's home delivery program for seniors, and sort and pack food for people who
+          need it. The food bank's mission is to end hunger in San Francisco and Marin counties, and it supplies
+          groceries to about 15,000 households every week.
+        </p>
+      </div>
+
+      <div class="volunteer-item">
+        <h3>Bay Area parks and open spaces</h3>
+        <p class="volunteer-when">Every other month</p>
+        <p>
+          I join restoration projects at different parks and open spaces around the Bay Area, helping care for the
+          places that make living here special.
+        </p>
+      </div>
+
+      <div class="volunteer-item">
+        <h3><a href="https://www.wicys.org/">Women in Cybersecurity (WiCyS)</a></h3>
+        <p class="volunteer-when">2027 Program Committee</p>
+        <p>
+          I review talk and workshop proposals for the WiCyS 2027 conference, helping choose sessions that are
+          practical, fresh and useful for people at every stage of their security careers.
+        </p>
+      </div>
+
+      <div class="volunteer-item">
+        <h3><a href="https://www.playworks.org/">Playworks</a></h3>
+        <p class="volunteer-when">National board project, through mid-2027</p>
+        <p>
+          Playworks helps schools and youth programs create recess and play where every child can join in. I'm working
+          with its national board over eight months to survey board members, analyze the results, and define
+          improvements to how the board engages.
+        </p>
+      </div>
+    </div>
+
     <h2 id="bios">Bios for organizers</h2>
     <p>Copy whichever fits your program.</p>
     <h3>Short</h3>
     <div class="bio-card">
-      <p>Courtney Root is a cybersecurity engineer focused on AI and cloud security, and an MBA candidate at UC Berkeley Haas.</p>
+      <p>
+        Courtney Root is a cybersecurity engineer with more than eight years in the field, focused on AI and cloud
+        security, and an MBA candidate at UC Berkeley Haas.
+      </p>
     </div>
     <h3>Long</h3>
     <div class="bio-card">
       <p>
-        Courtney Root is a cybersecurity engineer with four years of experience securing cloud products for customers.
-        Courtney's work and writing focus on securing AI systems, using AI to strengthen defense, and translating
-        security risk for business leaders. Courtney holds a Master of Cybersecurity from Georgia Tech, is completing
-        an MBA at UC Berkeley's Haas School of Business (Class of 2027), and serves as a program reviewer for the
-        WiCyS 2027 conference.
+        Courtney Root is a cybersecurity engineer with more than eight years in the field, including four years
+        securing cloud products for customers. Courtney's work and writing focus on securing AI systems, using AI to
+        strengthen defense, and helping business leaders make good security decisions. Courtney holds a Master of
+        Cybersecurity from Georgia Tech, is completing an MBA at UC Berkeley's Haas School of Business (Class of 2027),
+        and serves on the WiCyS 2027 Program Committee.
       </p>
     </div>
     <p><a href="/og-image.jpg">Download a high-resolution headshot</a></p>
 
     <h2>Get in touch</h2>
     <p>
-      Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>, or find me on
-      <a href={SITE.links.linkedin}>LinkedIn</a> and <a href={SITE.links.github}>GitHub</a>.
+      Email <Email />, or find me on <a href={SITE.links.linkedin}>LinkedIn</a> and <a href={SITE.links.github}>GitHub</a>.
     </p>
   </div>
 </Base>

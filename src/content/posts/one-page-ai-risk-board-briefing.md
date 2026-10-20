@@ -1,7 +1,7 @@
 ---
 title: "A one-page AI risk briefing for your board"
 description: "Boards are asking about AI risk, and most security updates answer the wrong question. A free one-page template, and how to fill it in so leaders can actually make a decision."
-date: 2026-11-10
+date: 2026-11-17
 pillar: security-leadership
 draft: true
 ---

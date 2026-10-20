@@ -1,7 +1,7 @@
 ---
 title: "Your AI vendor is the new HVAC contractor"
 description: "In 2013, attackers reached Target through a refrigeration vendor's login. In 2026, they reach you through an AI tool's API keys and OAuth tokens. Revisiting a breach I studied in grad school."
-date: 2026-11-03
+date: 2026-11-10
 pillar: security-leadership
 draft: true
 ---

@@ -2,10 +2,10 @@
 import Base from '../layouts/Base.astro';
 import AgentDiagram from '../components/AgentDiagram.astro';
 import PostList from '../components/PostList.astro';
-import { getCollection } from 'astro:content';
+import { getLivePosts } from '../lib/posts';
 import { PILLARS } from '../site';
 
-const published = await getCollection('posts', ({ data }) => !data.draft);
+const published = await getLivePosts();
 const recent = published
   .filter((p) => !p.data.archived)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -24,8 +24,8 @@ const showRecent = recent.length > 0;
     <div>
       <h1>Securing software that makes its own decisions.</h1>
       <p class="lede">
-        I'm Courtney Root, a security engineer working where AI and cloud security meet. I write about what
-        changes when systems start acting on their own, and how to explain that risk to the people who fund the fix.
+        I'm Courtney Root, and I've worked in cybersecurity for more than eight years. I write about how AI is
+        changing security, what it takes to protect AI systems, and how teams can make good security decisions together.
       </p>
       <div class="hero-actions">
         <a class="button" href="/writing/">Read my writing</a>
@@ -36,11 +36,22 @@ const showRecent = recent.length > 0;
   </section>
 
   <ul class="credentials" aria-label="Background">
-    <li><strong>4 years</strong> in cloud security engineering</li>
+    <li><strong>8+ years</strong> in cybersecurity</li>
     <li><strong>MS Cybersecurity</strong>, Georgia Tech</li>
     <li><strong>MBA '27</strong>, Berkeley Haas</li>
-    <li><strong>Program reviewer</strong>, WiCyS 2027</li>
+    <li><strong>Program Committee</strong>, WiCyS 2027</li>
   </ul>
+
+  <section class="thesis" aria-label="My point of view">
+    <p class="thesis-lead">
+      AI agents turn every input into a potential instruction, so security has to shift from protecting data
+      to governing what software is allowed to do.
+    </p>
+    <p class="thesis-follow">
+      That only works when business, engineering and security set those limits together, so customers stay
+      protected and teams keep moving fast.
+    </p>
+  </section>
 
   <div class="section-head"><h2>What I write about</h2></div>
   <div class="focus">

@@ -4,6 +4,7 @@ import '@fontsource-variable/source-serif-4/opsz.css';
 import '@fontsource-variable/source-serif-4/opsz-italic.css';
 import '../styles/global.css';
 import { SITE } from '../site';
+import Email from '../components/Email.astro';
 
 interface Props { title?: string; description?: string; }
 const { title, description = SITE.description } = Astro.props;
@@ -34,6 +35,9 @@ const nav = [
     <meta property="og:image" content={new URL('/og-image.jpg', Astro.site)} />
     <meta name="twitter:card" content="summary" />
     <meta name="color-scheme" content="light dark" />
+    <!-- Opt-out signals for AI training and text-and-data mining (honored by well-behaved crawlers only) -->
+    <meta name="robots" content="noai, noimageai" />
+    <meta name="tdm-reservation" content="1" />
   </head>
   <body>
     <header class="site-header">
@@ -62,7 +66,7 @@ const nav = [
           <li><a href={SITE.links.linkedin}>LinkedIn</a></li>
           <li><a href={SITE.links.github}>GitHub</a></li>
           <li><a href="/rss.xml">RSS</a></li>
-          <li><a href={`mailto:${SITE.email}`}>Email</a></li>
+          <li><Email label="Email" /></li>
         </ul>
         <p>Views are my own and do not represent my employer.</p>
       </div>

@@ -1,7 +1,7 @@
 ---
 title: "Threat modeling an AI agent with tool access"
 description: "A chatbot answers questions. An agent takes actions. Four questions I ask before any agent ships, a worked example, and the controls I'd require."
-date: 2026-10-27
+date: 2026-11-03
 pillar: securing-ai
 draft: true
 ---

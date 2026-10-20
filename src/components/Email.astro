@@ -1,0 +1,14 @@
+---
+// Renders the email link with every character written as an HTML entity
+// (e.g. "c" becomes "&#99;"). Browsers show and click it normally, but simple
+// scrapers that search page source for "name@domain" patterns won't find it.
+// No JavaScript needed, so the strict Content-Security-Policy still holds.
+import { SITE } from '../site';
+
+interface Props { label?: string; }
+const { label } = Astro.props;
+const encode = (s: string) => [...s].map((c) => `&#${c.codePointAt(0)};`).join('');
+const href = encode(`mailto:${SITE.email}`);
+const text = label ? label.replace(/[&<>"]/g, (c) => `&#${c.charCodeAt(0)};`) : encode(SITE.email);
+---
+<Fragment set:html={`<a href="${href}">${text}</a>`} />

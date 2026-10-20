@@ -1,55 +1,60 @@
 ---
 import Base from '../layouts/Base.astro';
-import { SITE } from '../site';
-
-// Add entries as you give talks: { event, title, date, link? }
-const talks: { event: string; title: string; date: string; link?: string }[] = [];
+import Email from '../components/Email.astro';
 ---
-<Base title="Speaking" description="Talks and panels on AI security, cloud security, and security leadership.">
+<Base title="Speaking" description="Talks, panels and guest lectures on AI security, cloud security, incident response and security leadership.">
   <div class="page-intro">
     <h1>Speaking</h1>
-    <p class="lede">I speak with engineering, security and leadership audiences about what AI changes in security.</p>
+    <p class="lede">
+      I speak with engineering, security and leadership audiences about how AI is changing security and what
+      teams can do about it.
+    </p>
+    <p>
+      I bring more than eight years in cybersecurity, hands-on experience securing cloud products, and an MBA
+      lens on how security decisions get made and funded. I can give a talk, join a panel, guest lecture for a
+      class, or be a podcast guest, and I can tailor any topic below for technical or non-technical audiences.
+    </p>
   </div>
 
-  <div class="section-head"><h2>Talks I can give</h2></div>
+  <div class="section-head"><h2>Topics</h2></div>
   <ul class="topics">
     <li>
       <h3>Threat modeling AI agents</h3>
       <p>What changes when software has tools, memory and permissions, and the controls that actually matter.</p>
     </li>
     <li>
-      <h3>AI in the SOC, honestly</h3>
+      <h3>Securing AI systems</h3>
+      <p>Prompt injection, AI supply chain risk, and how to review an AI feature before it ships.</p>
+    </li>
+    <li>
+      <h3>AI in security operations</h3>
       <p>Where AI helps defenders today, where it adds risk, and how to tell the difference.</p>
     </li>
     <li>
-      <h3>Security for the boardroom</h3>
-      <p>Turning technical risk into decisions executives and boards can act on.</p>
+      <h3>Cloud and product security</h3>
+      <p>Building security into products that customers rely on, from design reviews to release.</p>
     </li>
     <li>
-      <h3>Getting your first CFP accepted</h3>
-      <p>Lessons from the reviewer's side of the table, for first-time speakers.</p>
+      <h3>Third-party and AI vendor risk</h3>
+      <p>What changes when vendors connect through tokens and APIs instead of network logins.</p>
+    </li>
+    <li>
+      <h3>Lessons from recent breaches</h3>
+      <p>What major incidents teach about incident response, disclosure and accountability.</p>
+    </li>
+    <li>
+      <h3>Security for executives and boards</h3>
+      <p>Turning technical risk into decisions leaders can make and fund.</p>
+    </li>
+    <li>
+      <h3>Careers in cybersecurity</h3>
+      <p>Getting into the field, growing in it, and getting your first conference talk accepted.</p>
     </li>
   </ul>
 
-  <div class="section-head"><h2>Past and upcoming</h2></div>
-  {talks.length === 0 ? (
-    <div class="empty-state prose">
-      <p>My first talks will be listed here. Want to be the first? Use the contact details below.</p>
-    </div>
-  ) : (
-    <ul class="posts">
-      {talks.map((t) => (
-        <li>
-          <time>{t.date}</time>
-          <div><h3>{t.link ? <a href={t.link}>{t.title}</a> : t.title}</h3><p>{t.event}</p></div>
-        </li>
-      ))}
-    </ul>
-  )}
-
   <div class="section-head"><h2>Invite me</h2></div>
   <p class="prose">
-    For conferences, podcasts, panels or guest lectures, email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+    For conferences, podcasts, panels or guest lectures, email <Email />.
     Bios and a headshot are on the <a href="/about/#bios">About page</a>.
   </p>
 </Base>

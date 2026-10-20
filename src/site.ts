@@ -4,10 +4,10 @@ export const SITE = {
   title: 'Courtney Root — AI & Cloud Security',
   description:
     'Security engineer writing about securing AI systems, using AI for defense, and translating security risk for leaders.',
-  email: 'hello@courtneyroot.dev', // TODO: confirm the address you want public
+  email: 'courtneyroot1@gmail.com',
   links: {
     linkedin: 'https://www.linkedin.com/in/TODO',
-    github: 'https://github.com/TODO',
+    github: 'https://github.com/rootcour',
   },
 };
 

@@ -1,3 +1,31 @@
+# courtneyroot.dev
+# Search engines and AI search/answer tools may index this site so people can find it.
+# AI model-training crawlers are asked not to collect anything.
+# Note: robots.txt is a request. Well-behaved crawlers honor it; spam harvesters do not.
+
+# --- AI model training: please don't collect ---
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# --- Everyone else (search engines, AI search and answer tools) ---
 User-agent: *
 Allow: /
 

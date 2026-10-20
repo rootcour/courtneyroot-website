@@ -1,17 +1,16 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PostList from '../../components/PostList.astro';
-import { getCollection } from 'astro:content';
+import { getLivePosts } from '../../lib/posts';
 
-const posts = (await getCollection('posts', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const posts = await getLivePosts();
 const current = posts.filter((p) => !p.data.archived);
 const archive = posts.filter((p) => p.data.archived);
 ---
 <Base title="Writing" description="Essays on securing AI systems, AI for defenders, and security leadership.">
   <div class="page-intro">
     <h1>Writing</h1>
-    <p class="lede">On securing AI systems, using AI for defense, and making security legible to the people who decide what gets funded.</p>
+    <p class="lede">Practical writing on securing AI systems, what recent breaches teach us, and how business and security teams can make better decisions together.</p>
     <p>Follow along with <a href="/rss.xml">RSS</a>.</p>
   </div>
 

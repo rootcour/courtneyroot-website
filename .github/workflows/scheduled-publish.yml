@@ -1,0 +1,31 @@
+# Publishes scheduled posts automatically.
+# Every morning this asks Cloudflare Pages to rebuild the site. Any post whose
+# date has arrived (and has draft: false) appears on the rebuilt site.
+#
+# One-time setup:
+# 1. Cloudflare dashboard > your Pages project > Settings > Builds > Deploy hooks:
+#    create a hook (branch: main) and copy its URL.
+# 2. GitHub repo > Settings > Secrets and variables > Actions > New repository secret:
+#    name CLOUDFLARE_DEPLOY_HOOK, value = the URL from step 1.
+
+name: Scheduled publish
+
+on:
+  schedule:
+    - cron: '7 14 * * *' # 14:07 UTC = about 7 a.m. Pacific
+  workflow_dispatch: # lets you run it by hand from the Actions tab
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Pages rebuild
+        env:
+          HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "CLOUDFLARE_DEPLOY_HOOK secret is not set. See setup steps at the top of this file."
+            exit 1
+          fi
+          curl --fail --silent --show-error -X POST "$HOOK"
+          echo "Rebuild requested."
