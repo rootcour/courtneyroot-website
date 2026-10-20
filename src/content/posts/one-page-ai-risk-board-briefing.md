@@ -3,7 +3,7 @@ title: "A one-page AI risk briefing for your board"
 description: "Boards are asking about AI risk, and most security updates answer the wrong question. A free one-page template, and how to fill it in so leaders can actually make a decision."
 date: 2026-11-17
 pillar: security-leadership
-draft: true
+draft: false
 ---
 
 **Download the template:** [Word (editable)](/downloads/ai-risk-board-briefing.docx) · [PDF](/downloads/ai-risk-board-briefing.pdf)
@@ -20,19 +20,27 @@ One page forces you to choose. If you can't fit your AI risk on a page, you don'
 
 ## How to fill it in
 
-### 1. Bottom line
+### 1. Summary
 
-Two sentences: where risk stands, which direction it's moving, and the one decision you need today. If you only get thirty seconds of attention, this is what you want remembered.
+Two or three sentences a board member could repeat to someone else after the meeting: what changed since last time, what worries you most and why, and the one decision you need. Lead with a fact, not a rating. "Moderate and rising" tells a board very little. A number they can picture tells them a lot.
 
-*Example: "Our AI risk is moderate and rising as teams connect more AI tools to customer systems. We need you to approve a rule that no AI system may move money, delete records or contact customers without a person approving."*
+Example: "Since last quarter, the number of AI tools connected to customer systems went from 4 to 11, and three of them can email customers without a person approving. That's our biggest AI risk right now. We're asking you to approve a rule that no AI system may move money, delete records or contact customers unless a person approves first."
 
 ### 2. Where we use AI
 
-Four rows, three numbers each: how many, how many touch sensitive data, and how many can act without a human approving.
+A table that shows how much AI the company uses and how much of it can act on its own. Count four kinds of AI:
+- Employee AI tools: chat assistants, coding assistants and writing tools people use at work.
+- AI features inside vendor products: the AI built into software you already pay for, like a CRM's email writer or a help desk's auto-replies.
+- AI agents and apps you built: anything your own teams put into production.
+- AI vendors connected to your systems: any outside AI tool that holds a login, API key or OAuth token for your accounts.
 
-That last column is the one that matters. An AI tool that drafts text for a person to review is a very different risk from one that can send, delete or pay on its own. This is where you make the shift from "do we use AI?" to **"what are we letting software do?"**
+For each one, fill in three numbers: how many there are, how many can see customer or sensitive data, and how many can act without a person approving, like sending email, changing records, moving money or pushing code.
 
-If you can't fill in these numbers, that *is* your briefing. "We don't know how many AI tools are connected to our systems" is a finding a board can act on, and it's more honest than a confident guess.
+The last column is the one the board should look at first. An AI tool that writes a draft for a person to review is a very different risk from one that can send, delete or pay on its own. Any row with tools that both see sensitive data and act on their own is where your top risks probably are. 
+
+Where to find the numbers: your AI admin console lists the apps connected to employee accounts. Expense reports and procurement records show AI subscriptions. Engineering can list the agents in production. Your biggest vendors can tell you which AI features are turned on.
+
+If you can't fill in a number, say so. "We don't know how many AI tools are connected to our systems" is a finding a board can act on, and it's more honest than a confident guess.
 
 ### 3. Top three risks, in business terms
 
@@ -57,16 +65,16 @@ Both answers are fine. What isn't fine is leaving the room without either, becau
 
 Four numbers, quarter over quarter. I picked measures that are hard to game and that track the things that actually go wrong:
 
-- **Inventory coverage.** You can't govern AI tools you don't know about.
-- **Scope reviews.** Are integrations still limited to what they need?
-- **Incidents and near misses.** Including the ones that didn't cause damage.
-- **Time to revoke a vendor's access.** When an AI vendor is breached, this number is your blast radius.
+- **AI tools inventoried.** The share of AI tools and integrations you've actually listed. You can't manage AI tools you don't know about.
+- **Vendor access reviewed.** The share of AI integrations whose access someone checked in the last 90 days. Access tends to grow during a pilot and never shrink afterward.
+- **Incidents and near misses.** AI-related security problems this quarter, including the ones that didn't cause damage.
+- **Time to cut off an AI vendor.** If one of your AI vendors is breached, how long it takes to shut off all of its access to your systems. Attackers can keep using that access until you do.
 
 ## Why now
 
 A few things make this timely. AI agents are showing up in real incidents, from [hidden instructions that trick assistants into leaking data](https://labs.cloudsecurityalliance.org/research/csa-research-note-indirect-prompt-injection-in-the-wild-2026/) to [attackers running AI agents against a thousand websites](/writing/ai-agent-hacking-spree-50-dollar-break-in/) for the price of a laptop. In Europe, the AI Act's obligations for high-risk systems [now take effect in December 2027](https://www.actuia.com/en/news/ai-act-obligations-in-force-and-delays-under-omnibus-2026-1744/), so companies there have a fixed date to work toward. And every new AI integration your teams add between now and your next board meeting is another decision about what software can do on the company's behalf.
 
-That's the real message for leaders: **deciding what AI is allowed to do is a decision for business, engineering and security together.** Done well, it keeps customers protected without slowing the teams building for them. This page is a way to make that decision on purpose.
+That's the real message for leaders: **deciding what AI is allowed to do is a decision for leadership from business, engineering and security together.** Done well, it keeps customers protected without slowing the teams building for them. This page is a way to make that decision on purpose.
 
 If you use the template, I'd love to hear what you changed and what your board asked.
 
