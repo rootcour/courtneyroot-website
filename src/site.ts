@@ -17,7 +17,7 @@ export const SITE = {
 export const GAME = {
   // Your Worker's URL from `npm run deploy` in the prompt-injection-game repo.
   // No trailing slash. If you change this, also update connect-src in public/_headers.
-  apiUrl: 'https://prompt-injection-game.courtneyroot.dev,
+  apiUrl: 'https://prompt-injection-game.courtneyroot.dev',
   // Turnstile SITE key (the public one, safe to commit). The SECRET key goes
   // only in the Worker, never here.
   turnstileSiteKey: '0x4AAAAAAFeUQ0z6U7qRyuuc',
