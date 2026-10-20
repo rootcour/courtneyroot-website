@@ -200,15 +200,31 @@ function startGame(root) {
         sitekey: SITE_KEY,
         appearance: 'interaction-only',
         callback: (token) => {
-          turnstile.remove(widgetId);
+          removeWidget(turnstile, widgetId);
           resolve(token);
         },
-        'error-callback': () => {
-          turnstile.remove(widgetId);
-          reject(new Error('The human check failed. Refresh the page and try again.'));
+        // Turnstile passes an error code, for example 110200 when this site's
+        // hostname isn't on the widget's hostname list in the Cloudflare
+        // dashboard. Showing the code makes setup problems easy to look up.
+        'error-callback': (code) => {
+          removeWidget(turnstile, widgetId);
+          reject(new Error(`The human check failed (Turnstile error ${code}). Refresh the page and try again.`));
+          // Returning true tells Turnstile we handled the error, so it doesn't
+          // also log its own warning or retry on its own.
+          return true;
         },
       });
     });
+  }
+
+  // Removes a finished widget. Turnstile can throw if the widget is already
+  // gone, which doesn't matter here, so the error is ignored.
+  function removeWidget(turnstile, widgetId) {
+    try {
+      turnstile.remove(widgetId);
+    } catch {
+      // Already removed.
+    }
   }
 
   // Returns a working session token, getting a new one if needed. Sessions last
