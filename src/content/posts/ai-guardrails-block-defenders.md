@@ -16,9 +16,9 @@ This month it happened again. When attackers hit the AI coding tool OpenCode, th
 
 The guardrails aren't wrong to exist. From the model's side, a request to analyze malware, reconstruct an exploit chain or explain how stolen credentials were used looks the same whether it comes from a defender or an attacker. The model can't see who's asking.
 
-The numbers show how strict the defaults are. When OpenAI announced a less-restricted cyber model for vetted defenders in August, [Axios reported](https://axios.com/2026/08/10/openai-gpt-astra-restrictions-safety-hacking-defenders) that in testing, OpenAI's standard model responded to 1.5% of advanced cybersecurity requests, like exploit-chain development and privilege escalation. The defender model responded to 95%.
+The numbers show how strict the standard models are. In August, OpenAI released a version of its model just for vetted security teams. According to [Axios](https://axios.com/2026/08/10/openai-gpt-astra-restrictions-safety-hacking-defenders), OpenAI tested both versions on advanced security tasks, like chaining exploits together or gaining higher-level access to a system. The standard model helped with only 1.5% of those requests and refused the rest. The version for vetted security teams helped with 95%.
 
-So the problem isn't really the guardrail. It's that defenders hit it at the worst possible moment, in the middle of an incident, with no time to sort out access.
+The problem isn't the guardrail. The problem is timing. Most security teams find out the model won’t help in the middle of an incident, when they’re under pressure and don’t have days to apply for vetted access or set up a different tool.
 
 ## What I'd set up now
 
