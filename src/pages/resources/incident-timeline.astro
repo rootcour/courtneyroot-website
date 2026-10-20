@@ -1,0 +1,181 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getLivePosts } from '../../lib/posts';
+import incidents from '../../data/incidents.json';
+
+// To add an incident, add one entry to src/data/incidents.json.
+// "post" is optional: the "Read my take" link only shows once that post is live.
+
+type Incident = {
+  date: string; // YYYY-MM, used for sorting and grouping
+  display?: string; // optional label when the month isn't exact
+  title: string;
+  tags: string[];
+  summary: string;
+  lesson: string;
+  source: { label: string; url: string };
+  post?: string;
+};
+
+const TAGS: Record<string, string> = {
+  ai: 'AI',
+  breach: 'Breach',
+  ransomware: 'Ransomware',
+  'supply-chain': 'Supply chain',
+  'nation-state': 'Nation-state',
+  infrastructure: 'Infrastructure',
+  vulnerability: 'Vulnerability',
+  'social-engineering': 'Social engineering',
+  disruption: 'Disruption',
+};
+
+const live = new Set((await getLivePosts()).map((p) => p.id));
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+const sorted = [...(incidents as Incident[])].sort((a, b) => b.date.localeCompare(a.date));
+const years = [...new Set(sorted.map((i) => i.date.slice(0, 4)))];
+const byYear = years.map((y) => ({ year: y, items: sorted.filter((i) => i.date.startsWith(y)) }));
+const tagCounts = Object.keys(TAGS).map((t) => ({
+  id: t,
+  label: TAGS[t],
+  count: sorted.filter((i) => i.tags.includes(t)).length,
+}));
+const label = (i: Incident) =>
+  i.display ?? `${months[Number(i.date.slice(5, 7)) - 1]} ${i.date.slice(0, 4)}`;
+const first = years[years.length - 1];
+const last = years[0];
+---
+<Base
+  title="Security incidents timeline"
+  description={`${sorted.length} security incidents from ${first} to ${last}, newest first, with what happened and the lesson each one teaches.`}
+>
+  <div class="page-intro">
+    <p class="resource-kind"><a href="/resources/">Resources</a></p>
+    <h1>Security incidents timeline</h1>
+    <p class="lede">
+      {sorted.length} security incidents from {first} to {last}, newest first. Each entry says what happened,
+      the lesson I take from it, and where to read more.
+    </p>
+    <p>
+      This list is curated, not complete. I picked incidents that changed how the field thinks or that teach
+      something worth remembering, with extra attention to AI incidents in the last few years. For a fuller
+      record of AI incidents, see the <a href="https://incidentdatabase.ai/">AI Incident Database</a>.
+    </p>
+  </div>
+
+  <div class="tl-controls">
+    <div class="tl-filters" role="group" aria-label="Filter incidents by type">
+      <button type="button" class="tl-chip" data-filter="all" aria-pressed="true">All <span>{sorted.length}</span></button>
+      {tagCounts.map((t) => (
+        <button type="button" class="tl-chip" data-filter={t.id} aria-pressed="false">{t.label} <span>{t.count}</span></button>
+      ))}
+    </div>
+    <nav class="tl-years" aria-label="Jump to year">
+      {years.map((y) => <a href={`#y${y}`}>{y}</a>)}
+    </nav>
+    <p class="tl-status" aria-live="polite" id="tl-status">Showing all {sorted.length} incidents.</p>
+  </div>
+
+  <div class="tl">
+    {byYear.map((group) => (
+      <section class="tl-year" id={`y${group.year}`} data-year={group.year}>
+        <h2 class="tl-year-label">{group.year}</h2>
+        <ol class="tl-list">
+          {group.items.map((i) => (
+            <li class="tl-item" data-tags={i.tags.join(' ')}>
+              <span class="tl-dot" aria-hidden="true"></span>
+              <article class="tl-card">
+                <p class="tl-date">{label(i)}</p>
+                <h3>{i.title}</h3>
+                <p class="tl-summary">{i.summary}</p>
+                <p class="tl-lesson"><strong>Lesson:</strong> {i.lesson}</p>
+                <div class="tl-foot">
+                  <ul class="tl-tags" aria-label="Type">
+                    {i.tags.map((t) => <li class={t === 'ai' ? 'is-ai' : undefined}>{TAGS[t]}</li>)}
+                  </ul>
+                  <p class="tl-links">
+                    <a href={i.source.url} rel="noopener">Source: {i.source.label}</a>
+                    {i.post && live.has(i.post) && <a href={`/writing/${i.post}/`}>Read my take</a>}
+                  </p>
+                </div>
+              </article>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+  </div>
+
+  <p class="tl-end prose">
+    Know an incident that belongs here, or spot a mistake? I'd like to hear about it. You can also follow along with
+    <a href="/rss.xml">RSS</a>.
+  </p>
+</Base>
+
+<script>
+  const items = Array.from(document.querySelectorAll<HTMLElement>('.tl-item'));
+  const years = Array.from(document.querySelectorAll<HTMLElement>('.tl-year'));
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.tl-chip'));
+  const status = document.getElementById('tl-status');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll effects: cards fade up as they arrive, and the card nearest the
+  // middle of the screen grows slightly. Without JavaScript, or with reduced
+  // motion turned on, every card simply shows at full size.
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('tl-animate');
+
+    const reveal = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            reveal.unobserve(e.target);
+          }
+        }
+      },
+      { rootMargin: '0px 0px -8% 0px', threshold: 0.05 },
+    );
+
+    const focus = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) e.target.classList.toggle('is-focus', e.isIntersecting);
+      },
+      { rootMargin: '-42% 0px -42% 0px', threshold: 0 },
+    );
+
+    for (const el of items) {
+      reveal.observe(el);
+      focus.observe(el);
+    }
+  }
+
+  // Filters
+  function applyFilter(filter: string) {
+    let shown = 0;
+    for (const el of items) {
+      const match = filter === 'all' || (el.dataset.tags ?? '').split(' ').includes(filter);
+      el.hidden = !match;
+      if (match) {
+        shown++;
+        el.classList.add('is-visible');
+      }
+    }
+    for (const y of years) {
+      y.hidden = !y.querySelector('.tl-item:not([hidden])');
+      const link = document.querySelector<HTMLElement>(`.tl-years a[href="#${y.id}"]`);
+      if (link) link.hidden = y.hidden;
+    }
+    for (const c of chips) c.setAttribute('aria-pressed', String(c.dataset.filter === filter));
+    if (status) {
+      const chip = chips.find((c) => c.dataset.filter === filter);
+      const name = chip?.firstChild?.textContent?.trim() ?? '';
+      status.textContent =
+        filter === 'all' ? `Showing all ${shown} incidents.` : `Showing ${shown} ${name} incidents.`;
+    }
+  }
+
+  for (const c of chips) {
+    c.addEventListener('click', () => applyFilter(c.dataset.filter ?? 'all'));
+  }
+</script>

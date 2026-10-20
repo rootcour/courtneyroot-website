@@ -1,0 +1,77 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getLivePosts } from '../../lib/posts';
+
+// Each resource can point to the blog post that explains it. The post link only
+// shows once that post is live, so the page never links to an unpublished draft.
+const live = new Set((await getLivePosts()).map((p) => p.id));
+
+const resources = [
+  {
+    title: 'Security incidents timeline',
+    kind: 'Timeline',
+    blurb:
+      'More than 130 security incidents from the last twenty years, newest first, from a stolen Veterans Affairs laptop in 2006 to AI agents breaking into company websites this fall. Each entry says what happened and the lesson it teaches, and you can filter by type, including AI incidents.',
+    links: [{ href: '/resources/incident-timeline/', label: 'Explore the timeline' }],
+    post: null,
+  },
+  {
+    title: 'AI agent security review checklist',
+    kind: 'Printable checklist',
+    blurb:
+      'One page to bring to the design review before an AI agent ships. The checklist walks through what the agent reads, whose authority it acts with, what it can do and how data can leave, then lists the controls to require. Product, engineering and security sign off together at the bottom.',
+    links: [
+      { href: '/resources/ai-agent-review-checklist/', label: 'View and print' },
+      { href: '/downloads/ai-agent-review-checklist.pdf', label: 'PDF' },
+    ],
+    post: { id: 'threat-modeling-ai-agents', label: 'Threat modeling an AI agent with tool access' },
+  },
+  {
+    title: 'One-page AI risk briefing for your board',
+    kind: 'Template',
+    blurb:
+      'A one-page template for telling a board where the company stands on AI risk and what decision you need from them. The template is free to use and adapt.',
+    links: [
+      { href: '/downloads/ai-risk-board-briefing.docx', label: 'Word (editable)' },
+      { href: '/downloads/ai-risk-board-briefing.pdf', label: 'PDF' },
+    ],
+    post: { id: 'one-page-ai-risk-board-briefing', label: 'A one-page AI risk briefing for your board' },
+  },
+];
+---
+<Base title="Resources" description="Free checklists, templates and tools for securing AI systems and making security decisions with business teams.">
+  <div class="page-intro">
+    <h1>Resources</h1>
+    <p class="lede">
+      Free checklists and templates for securing AI systems and making security decisions together with
+      business and engineering teams.
+    </p>
+    <p>
+      Everything here is free to use and adapt at work. If a resource helps your team, or you have an idea
+      for a better version, I'd like to hear about it.
+    </p>
+  </div>
+
+  <ul class="resources">
+    {resources.map((r) => (
+      <li class="resource">
+        <p class="resource-kind">{r.kind}</p>
+        <h2>{r.title}</h2>
+        <p>{r.blurb}</p>
+        <p class="resource-links">
+          {r.links.map((l) => <a class="textlink" href={l.href}>{l.label}</a>)}
+        </p>
+        {r.post && live.has(r.post.id) && (
+          <p class="resource-post">Background: <a href={`/writing/${r.post.id}/`}>{r.post.label}</a></p>
+        )}
+      </li>
+    ))}
+  </ul>
+
+  <div class="section-head"><h2>Coming next</h2></div>
+  <p class="prose">
+    I'm building a few free tools to add here in 2027: a scanner that finds hidden instructions in documents
+    and web pages, a checker that flags over-permissioned AI agents, and a game where you try to trick an AI
+    into giving up a secret. Follow along with <a href="/rss.xml">RSS</a>.
+  </p>
+</Base>

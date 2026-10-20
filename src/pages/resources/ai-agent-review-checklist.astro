@@ -1,0 +1,115 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const questions = [
+  {
+    q: 'What does it read?',
+    help: 'List every source that enters the agent\'s context and mark each one trusted or untrusted. Trusted means only your team can write or change the content.',
+  },
+  {
+    q: 'Whose authority does it act with?',
+    help: 'Name every credential the agent holds and whose identity each credential represents.',
+  },
+  {
+    q: 'What can it do?',
+    help: 'List every action and sort the actions into read-only, reversible writes and irreversible writes (delete, send, pay, publish, merge, deploy).',
+  },
+  {
+    q: 'How can data leave?',
+    help: 'List every way information can get out: email, messages, web requests, rendered images or links, shared folders, pull requests.',
+  },
+];
+
+const docItems = [
+  'Every input source, marked trusted or untrusted',
+  'The credentials the agent holds and whose identity they represent',
+  'Every action the agent can take, sorted by consequence',
+  'Every way data can leave (email, links, images, outbound requests)',
+];
+
+const reqItems = [
+  'Credentials are scoped to the task, short-lived, and not the user\'s full identity',
+  'A person approves every irreversible or outbound action, on a screen that shows exactly what will happen',
+  'Images, links and outbound requests are limited to approved domains',
+  'Untrusted content can\'t reach the component that takes consequential actions',
+  'Every tool call is logged with the credential used and the content in context',
+  'One tested step revokes the agent\'s access and stops it',
+];
+
+const signers = ['Product', 'Engineering', 'Security'];
+---
+<Base title="AI agent security review checklist" description="A printable one-page checklist to bring to the design review before an AI agent ships.">
+  <div class="checklist-toolbar no-print">
+    <a class="back" href="/resources/">← Resources</a>
+    <span class="checklist-actions">
+      <button type="button" class="button" id="print-checklist">Print checklist</button>
+      <a class="textlink" href="/downloads/ai-agent-review-checklist.pdf">Download PDF</a>
+    </span>
+  </div>
+
+  <article class="checklist">
+    <header class="checklist-head">
+      <h1>AI agent security review checklist</h1>
+      <p class="checklist-intro">
+        Bring this checklist to the design review before an AI agent ships. An agent that reads untrusted
+        content and can also take irreversible actions or send data out has a prompt injection path.
+      </p>
+      <dl class="checklist-fields">
+        <div><dt>Agent</dt><dd></dd></div>
+        <div><dt>Owner</dt><dd></dd></div>
+        <div><dt>Review date</dt><dd></dd></div>
+      </dl>
+    </header>
+
+    <section>
+      <h2><span class="part">Part 1</span> Map the agent</h2>
+      <ol class="checklist-questions">
+        {questions.map((item) => (
+          <li>
+            <h3>{item.q}</h3>
+            <p>{item.help}</p>
+            <div class="write-in" aria-hidden="true"></div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <div class="print-cols">
+    <section>
+      <h2><span class="part">Part 2</span> Documented</h2>
+      <ul class="checkboxes">
+        {docItems.map((d) => <li><span class="box" aria-hidden="true"></span>{d}</li>)}
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="part">Part 3</span> Required before launch</h2>
+      <ul class="checkboxes">
+        {reqItems.map((r) => <li><span class="box" aria-hidden="true"></span>{r}</li>)}
+      </ul>
+    </section>
+    </div>
+
+    <section>
+      <h2><span class="part">Part 4</span> Decision</h2>
+      <p class="decision">
+        <span><span class="box" aria-hidden="true"></span>Ready to ship</span>
+        <span><span class="box" aria-hidden="true"></span>Not ready. Gaps to close:</span>
+      </p>
+      <div class="write-in short" aria-hidden="true"></div>
+      <div class="signoff">
+        {signers.map((s) => (
+          <div><div class="sign-line" aria-hidden="true"></div><p>{s}</p></div>
+        ))}
+      </div>
+    </section>
+
+    <footer class="checklist-foot">
+      <p>Free to use and adapt. Courtney Root · courtneyroot.dev</p>
+    </footer>
+  </article>
+</Base>
+
+<script>
+  document.getElementById('print-checklist')?.addEventListener('click', () => window.print());
+</script>
