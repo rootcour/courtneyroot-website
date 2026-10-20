@@ -3,7 +3,7 @@ title: "Your AI vendor is the new HVAC contractor"
 description: "In 2013, attackers reached Target through a refrigeration vendor's login. In 2026, they reach you through an AI tool's API keys and OAuth tokens. Revisiting a breach I studied in grad school."
 date: 2026-11-10
 pillar: security-leadership
-draft: true
+draft: false
 ---
 
 A few years ago, as a Georgia Tech grad student, I wrote an analysis of the [2013 Target breach](/writing/diamond-model-target-breach/). The short version: attackers stole credentials from Fazio Mechanical, the refrigeration contractor that had access to Target's network for billing and project work. From there they moved through a flat network to the point-of-sale registers and skimmed card data from tens of millions of customers through the holiday season.
