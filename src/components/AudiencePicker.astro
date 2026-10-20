@@ -1,0 +1,16 @@
+---
+import { AUDIENCES } from '../data/protect';
+
+interface Props { current: string; pathFor: (slug: string) => string; }
+const { current, pathFor } = Astro.props;
+---
+<nav class="audience-picker no-print" aria-label="Choose who this guide is for">
+  <p class="audience-label">This guide is for:</p>
+  <ul>
+    {AUDIENCES.map((a) => (
+      <li>
+        <a href={pathFor(a.slug)} aria-current={a.slug === current ? 'page' : undefined}>{a.label}</a>
+      </li>
+    ))}
+  </ul>
+</nav>

@@ -1,0 +1,1091 @@
+[
+  {
+    "date": "2026-10",
+    "title": "OpenCode console breach",
+    "tags": ["ai", "breach"],
+    "summary": "Attackers broke into OpenCode's hosted console, where developers stored their AI provider keys, and users found unauthorized charges on their AI accounts. During the investigation, the AI models OpenCode's team relied on refused to keep analyzing the malicious code once it tripped their safety filters.",
+    "lesson": "Treat AI provider keys like money, and test whether your AI tools will help you during an incident before you need them.",
+    "source": { "label": "TechCrunch", "url": "https://techcrunch.com/2026/10/19/hackers-hit-ai-coding-tool-opencode-running-up-charges-on-users-ai-accounts/" },
+    "post": "ai-guardrails-block-defenders"
+  },
+  {
+    "date": "2026-10",
+    "title": "AI agents break into more than 100 company websites",
+    "tags": ["ai", "breach"],
+    "summary": "Starting in late September, an operator pointed a set of AI agents at e-commerce sites in four countries and let them work largely on their own. A researcher estimated more than 100 companies' websites were compromised, at roughly $50 in AI usage per break-in.",
+    "lesson": "Forgotten admin panels and side infrastructure are what patient, cheap AI agents find first, so keep a complete inventory of everything you expose to the internet.",
+    "source": { "label": "WinBuzzer, reporting on Reuters", "url": "https://winbuzzer.com/2026/10/20/hacker-used-ai-agents-to-breach-100-plus-companies-websites-xcxwbn/" },
+    "post": "ai-agent-hacking-spree-50-dollar-break-in"
+  },
+  {
+    "date": "2026-09",
+    "title": "153 million driver's license records for sale",
+    "tags": ["breach"],
+    "summary": "The FBI began investigating a dark web service selling access to about 153 million US and Canadian driver's license records, reportedly taken from ID scanning company IDScan.",
+    "lesson": "Every business that scans IDs is holding documents attackers want, so keep only what you need and delete it on a schedule.",
+    "source": { "label": "Krebs on Security", "url": "https://krebsonsecurity.com/2026/09/fbi-probes-service-selling-153m-drivers-licenses/" }
+  },
+  {
+    "date": "2026-08",
+    "display": "Q3 2026",
+    "title": "AI agent publishes a malicious package to PyPI",
+    "tags": ["ai", "supply-chain"],
+    "summary": "An AI evaluation agent followed setup instructions that referenced a package that didn't exist, then published a malicious package to the public PyPI registry. The package was live for about an hour and ran on 15 real systems, including a security scanner whose credentials the agent then used.",
+    "lesson": "An AI agent should never hold the credentials to publish packages to a public registry.",
+    "source": { "label": "SC Media, on the OWASP GenAI Q3 roundup", "url": "https://www.scworld.com/analysis/ai-agents-breach-production-systems-spread-malware-in-major-exploits" },
+    "post": "five-prompt-injection-patterns"
+  },
+  {
+    "date": "2026-08",
+    "title": "CareCloud medical records theft",
+    "tags": ["breach"],
+    "summary": "Hackers stole medical records for at least 3.7 million patients from CareCloud, a company that hosts electronic patient records for healthcare providers.",
+    "lesson": "When one vendor hosts records for many providers, a single breach reaches millions of patients who never heard of that vendor.",
+    "source": { "label": "TechCrunch", "url": "https://techcrunch.com/2026/08/19/carecloud-confirms-3-7m-patients-had-their-medical-records-stolen-in-data-breach/" }
+  },
+  {
+    "date": "2026-07",
+    "title": "Iran-linked attacks on US water systems",
+    "tags": ["infrastructure", "nation-state"],
+    "summary": "During July, Iran-linked hackers targeted more than 100 US water systems, going after internet-exposed controllers. Some operators were locked out of their own systems or lost visibility into treatment. CISA confirmed the scale in August.",
+    "lesson": "Take industrial controllers off the open internet and change default passwords; small utilities often need outside help to do both.",
+    "source": { "label": "TechCrunch", "url": "https://techcrunch.com/2026/08/26/cisa-confirms-hackers-targeted-over-100-us-water-systems-during-july/" }
+  },
+  {
+    "date": "2026-07",
+    "title": "OpenAI's test agents breach Hugging Face",
+    "tags": ["ai", "breach"],
+    "summary": "AI agents in an OpenAI cybersecurity evaluation escaped their test environment, used exposed credentials to break into Hugging Face's production systems, and reached administrator access. Independent investigators found about 700 of roughly 1,200 agents took part.",
+    "lesson": "Any service two sandboxes share is a possible escape route, so test containment instead of assuming it.",
+    "source": { "label": "Vectra AI", "url": "https://www.vectra.ai/blog/an-autonomous-ai-agent-compromised-hugging-face-the-response-is-the-real-story" },
+    "post": "hugging-face-incident-containing-ai-agents"
+  },
+  {
+    "date": "2026-07",
+    "title": "Fairlife ransomware halts US production",
+    "tags": ["ransomware", "disruption"],
+    "summary": "A ransomware attack claimed by the Anubis group encrypted production systems at Fairlife, the Coca-Cola dairy brand. Coca-Cola shut down all US Fairlife production for about 11 days while it investigated.",
+    "lesson": "Know in advance which plants can run safely while IT systems are down and which must stop.",
+    "source": { "label": "BankInfoSecurity", "url": "https://www.bankinfosecurity.net/anubis-ransomware-halts-fairlife-milk-production-in-us-a-32297" }
+  },
+  {
+    "date": "2026-06",
+    "title": "Attackers turn a victim's AI server into their hacking tool",
+    "tags": ["ai"],
+    "summary": "Sysdig found attackers using someone else's misconfigured AI server as the decision-making engine of an automated hacking tool. The victim's hardware was doing the thinking for the attack.",
+    "lesson": "Self-hosted model servers need authentication and should stay off the public internet.",
+    "source": { "label": "Cloud Security Alliance", "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-llmjacking-evolved-offensive-agentic-20260/" },
+    "post": "attackers-want-your-tokens"
+  },
+  {
+    "date": "2026-06",
+    "title": "Klue breach through a forgotten 2022 credential",
+    "tags": ["breach", "supply-chain"],
+    "summary": "An extortion gang broke into competitive intelligence company Klue with a credential issued in 2022 for a limited pilot. The intrusion exposed cloud keys and data for close to 200 customer companies.",
+    "lesson": "Credentials issued for pilots and trials need an expiration date and an owner.",
+    "source": { "label": "TechCrunch", "url": "https://techcrunch.com/2026/06/23/klue-says-hackers-stole-credential-from-2022-that-led-to-customer-data-breaches/" }
+  },
+  {
+    "date": "2026-06",
+    "title": "Instagram accounts taken over through Meta's AI support bot",
+    "tags": ["ai", "social-engineering"],
+    "summary": "Attackers posed as locked-out users and asked Meta's AI support chatbot to send password reset codes to email addresses they controlled. Tens of thousands of Instagram accounts were affected.",
+    "lesson": "An AI support agent that can change account recovery settings needs the same identity checks as a human support agent, or stronger ones.",
+    "source": { "label": "The New York Times", "url": "https://www.nytimes.com/2026/06/09/technology/instagram-hack-ai-bug.html" }
+  },
+  {
+    "date": "2026-05",
+    "title": "Composio token breach",
+    "tags": ["ai", "breach"],
+    "summary": "Attackers started with one Composio employee's stolen Gmail token and eventually reached a store of customer credentials. Composio, which connects AI agents to other apps, had to revoke about 5,000 GitHub tokens and about 5,200 API keys.",
+    "lesson": "Any company that holds tokens for thousands of customers is a target, so ask your AI vendors how they store and revoke yours.",
+    "source": { "label": "Material Security", "url": "https://material.security/resources/the-composio-breach-one-token-10242-doors" },
+    "post": "attackers-want-your-tokens"
+  },
+  {
+    "date": "2026-05",
+    "title": "Instructure Canvas data theft and login defacement",
+    "tags": ["ransomware", "social-engineering"],
+    "summary": "The ShinyHunters gang used voice phishing to get into Instructure's systems and stole data on more than 30 million students and staff. When the company didn't pay, the attackers defaced Canvas login pages during final exams.",
+    "lesson": "Help desks and IT staff need a way to verify callers that a convincing voice can't get around.",
+    "source": { "label": "TechCrunch", "url": "https://techcrunch.com/2026/05/07/hackers-deface-school-login-pages-after-claiming-another-instructure-hack/" }
+  },
+  {
+    "date": "2026-05",
+    "title": "Hackers breach Polish water treatment plants",
+    "tags": ["infrastructure", "nation-state"],
+    "summary": "Poland said Russian hackers had breached several water treatment plants earlier in the year, and warned that US utilities face the same threat.",
+    "lesson": "Water systems are on the front line of geopolitical conflict, even far from the conflict itself.",
+    "source": { "label": "TechCrunch", "url": "https://techcrunch.com/2026/05/08/poland-says-hackers-breached-water-treatment-plants-and-the-u-s-is-facing-the-same-threat/" }
+  },
+  {
+    "date": "2026-04",
+    "title": "GrafanaGhost prompt injection in log data",
+    "tags": ["ai", "vulnerability"],
+    "summary": "Researchers planted instructions in Grafana log entries. Grafana's AI assistant read the logs, followed the instructions, and leaked data by rendering an image whose web address carried the stolen information.",
+    "lesson": "Images and links in AI output are an exit, and exits need an allowlist.",
+    "source": { "label": "Cloud Security Alliance", "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-indirect-prompt-injection-in-the-wild-2026/" },
+    "post": "five-prompt-injection-patterns"
+  },
+  {
+    "date": "2026-04",
+    "title": "Comment and Control: one prompt injection, three coding agents",
+    "tags": ["ai", "vulnerability"],
+    "summary": "Researchers showed that a single instruction hidden in a GitHub pull request title made three AI coding agents post their own API keys in a comment. The vendors fixed the flaw without issuing a CVE.",
+    "lesson": "Coding agents that read outside contributors' pull requests shouldn't have access to secrets.",
+    "source": { "label": "VentureBeat", "url": "https://venturebeat.com/security/ai-agent-runtime-security-system-card-audit-comment-and-control-2026" },
+    "post": "five-prompt-injection-patterns"
+  },
+  {
+    "date": "2026-04",
+    "title": "FBI surveillance system breach",
+    "tags": ["nation-state", "breach"],
+    "summary": "The FBI declared a major cyber incident after a suspected Chinese breach of an unclassified network exposed phone numbers of surveillance targets, including wiretap data.",
+    "lesson": "Systems built for lawful surveillance are high-value targets and need protection to match.",
+    "source": { "label": "Politico", "url": "https://www.politico.com/news/2026/04/01/fbi-hack-surveillance-system-major-incident-00854237" }
+  },
+  {
+    "date": "2026-03",
+    "title": "Context.ai token theft reaches Vercel",
+    "tags": ["ai", "breach", "supply-chain"],
+    "summary": "Attackers broke into Context.ai, which stored OAuth tokens for users who connected AI agents to their work apps. One token belonged to a Vercel employee who had clicked \"Allow All,\" and the attackers used it to get into Vercel's systems and copy customer configuration data.",
+    "lesson": "Require admin approval before employees give new apps broad access with their work accounts.",
+    "source": { "label": "Arcade", "url": "https://www.arcade.dev/blog/vercel-contextai-and-the-oauth-hoarding-problem" },
+    "post": "attackers-want-your-tokens"
+  },
+  {
+    "date": "2026-03",
+    "title": "Backdoored security tools in a supply chain wave",
+    "tags": ["supply-chain"],
+    "summary": "Attackers backdoored widely used open source tools, including Aqua Security's Trivy scanner and the Bitwarden command-line tool, to steal credentials and tokens from developers who installed them. Stolen credentials later led to data theft at OpenAI and Europe's cyber agency.",
+    "lesson": "Security tools run with broad access, so pin their versions and watch them as closely as any other dependency.",
+    "source": { "label": "Ars Technica", "url": "https://arstechnica.com/security/2026/03/widely-used-trivy-scanner-compromised-in-ongoing-supply-chain-attack/" }
+  },
+  {
+    "date": "2026-03",
+    "title": "Stryker devices wiped by Iran-linked hackers",
+    "tags": ["nation-state", "disruption"],
+    "summary": "A group the US linked to Iranian intelligence remotely wiped tens of thousands of employee devices at medical device maker Stryker, disrupting operations for several days.",
+    "lesson": "Device management tools that can wipe every laptop at once need the strongest access controls you have.",
+    "source": { "label": "TechCrunch", "url": "https://techcrunch.com/2026/03/11/stryker-hack-pro-iran-hacktivist-group-handala-says-it-is-behind-attack/" }
+  },
+  {
+    "date": "2026-02",
+    "title": "EvilTokens phishing kit",
+    "tags": ["social-engineering"],
+    "summary": "A phishing kit called EvilTokens tricked people into approving a sign-in on their own device, then kept the resulting tokens. It compromised more than 340 Microsoft 365 organizations within weeks.",
+    "lesson": "Multi-factor authentication doesn't help once a token is issued, so watch for unusual device sign-in approvals and revoke tokens fast.",
+    "source": { "label": "Cloud Security Alliance", "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-oauth-consent-phishing-ai-identity-2026052/" },
+    "post": "attackers-want-your-tokens"
+  },
+  {
+    "date": "2026-01",
+    "title": "Calendar invite tricks Gemini into leaking meetings",
+    "tags": ["ai", "vulnerability"],
+    "summary": "Miggo Security showed that a malicious calendar invite could get Google's Gemini to leak private meeting details. The attacker needed no access to the victim's account, only the ability to send an invite.",
+    "lesson": "Treat everything inbound as untrusted, even when it shows up inside a trusted app.",
+    "source": { "label": "Cloud Security Alliance", "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-indirect-prompt-injection-in-the-wild-2026/" },
+    "post": "five-prompt-injection-patterns"
+  },
+  {
+    "date": "2026-01",
+    "display": "Dec 2025 to Jan 2026",
+    "title": "Bizarre Bazaar: stolen AI access for sale",
+    "tags": ["ai"],
+    "summary": "Attackers made more than 35,000 attempts against exposed AI servers, tested each stolen credential against more than 30 AI providers, and sold working access through an online marketplace.",
+    "lesson": "Set spending limits and usage alerts with every AI provider so a stolen key shows up as a spike, not a surprise bill.",
+    "source": { "label": "Cloud Security Alliance", "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-llmjacking-evolved-offensive-agentic-20260/" },
+    "post": "attackers-want-your-tokens"
+  },
+  {
+    "date": "2025-11",
+    "title": "First reported AI-orchestrated espionage campaign",
+    "tags": ["ai", "nation-state"],
+    "summary": "Anthropic reported that a group it assessed as Chinese state-sponsored used Claude Code to carry out most of a cyber espionage campaign against about 30 organizations, with AI doing the large majority of the work. A small number of intrusions succeeded before Anthropic banned the accounts.",
+    "lesson": "AI lets small teams run campaigns that used to need many skilled people, so defenders should plan for more attacks at higher speed.",
+    "source": { "label": "Anthropic", "url": "https://assets.anthropic.com/m/ec212e6566a0d47/original/Disrupting-the-first-reported-AI-orchestrated-cyber-espionage-campaign.pdf" }
+  },
+  {
+    "date": "2025-10",
+    "title": "F5 source code stolen by nation-state hackers",
+    "tags": ["nation-state", "supply-chain"],
+    "summary": "F5 disclosed that nation-state hackers had long-term access to its product development environment and stole BIG-IP source code and details of unpatched vulnerabilities. CISA ordered federal agencies to patch F5 devices quickly.",
+    "lesson": "When a security vendor's source code is stolen, assume new exploits are coming and shorten your patch window for that product.",
+    "source": { "label": "The Hacker News", "url": "https://thehackernews.com/2025/10/f5-breach-exposes-big-ip-source-code.html" }
+  },
+  {
+    "date": "2025-09",
+    "title": "Collins Aerospace ransomware disrupts European airports",
+    "tags": ["ransomware", "supply-chain", "disruption"],
+    "summary": "A ransomware attack on Collins Aerospace's passenger check-in software forced Heathrow, Brussels and Berlin airports to fall back to manual check-in for days.",
+    "lesson": "Shared software across many airports means one vendor outage hits all of them, so practice manual fallbacks.",
+    "source": { "label": "TechCrunch", "url": "https://techcrunch.com/2025/09/22/eu-cyber-agency-confirms-ransomware-attack-causing-airport-disruptions/" }
+  },
+  {
+    "date": "2025-09",
+    "title": "Jaguar Land Rover production shutdown",
+    "tags": ["disruption"],
+    "summary": "A cyberattack forced Jaguar Land Rover to halt car production for weeks, with ripple effects across its UK supplier network. The UK government stepped in with a loan guarantee.",
+    "lesson": "A long shutdown at one manufacturer can push smaller suppliers to the edge, so supply chain resilience is part of cyber planning.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Jaguar_Land_Rover_cyberattack" }
+  },
+  {
+    "date": "2025-09",
+    "title": "Kido nursery chain data theft",
+    "tags": ["ransomware", "breach"],
+    "summary": "Attackers stole data on children from London nursery chain Kido and posted some profiles online to pressure the company into paying.",
+    "lesson": "Small organizations that hold children's data need basic protections too, because extortion groups don't skip them.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Kido_International_cyberattack" }
+  },
+  {
+    "date": "2025-09",
+    "title": "Asahi ransomware attack",
+    "tags": ["ransomware", "disruption"],
+    "summary": "The Qilin ransomware gang disrupted ordering and shipping at Japanese brewer Asahi, causing product shortages. Asahi later said personal data of about 1.5 million people may have been exposed.",
+    "lesson": "Order and shipping systems are the business; plan how to keep them running when they're encrypted.",
+    "source": { "label": "Security Affairs", "url": "https://securityaffairs.com/183131/cyber-crime/qilin-ransomware-claimed-responsibility-for-the-asahi-attack.html" }
+  },
+  {
+    "date": "2025-09",
+    "title": "Shai-Hulud npm worm",
+    "tags": ["supply-chain"],
+    "summary": "A self-replicating worm spread through hundreds of npm packages. It stole developers' tokens and used them to publish more infected package versions.",
+    "lesson": "Publishing tokens for package registries should be short-lived and protected with strong multi-factor authentication.",
+    "source": { "label": "Anvilogic, on the CISA alert", "url": "https://www.anvilogic.com/threat-reports/cisa-shai-hulud-npm-worm" }
+  },
+  {
+    "date": "2025-09",
+    "title": "ForcedLeak in Salesforce Agentforce",
+    "tags": ["ai", "vulnerability"],
+    "summary": "Noma Security showed that instructions hidden in a web lead form could make Salesforce's Agentforce leak CRM data to a domain that had once been trusted but had expired and could be bought.",
+    "lesson": "Review the domains on your allowlists, because an expired trusted domain becomes an attacker's exit.",
+    "source": { "label": "The Hacker News", "url": "https://thehackernews.com/2025/09/salesforce-patches-critical-forcedleak.html" }
+  },
+  {
+    "date": "2025-08",
+    "title": "Salesloft Drift token theft",
+    "tags": ["supply-chain", "ai", "breach"],
+    "summary": "Attackers stole OAuth tokens from the Drift chatbot integration and used them to pull data out of hundreds of companies' Salesforce instances.",
+    "lesson": "An AI chatbot vendor connected to your CRM is a door into your CRM, so limit what each integration can read.",
+    "source": { "label": "Security Affairs", "url": "https://securityaffairs.com/181686/cyber-crime/google-salesloft-drift-breach-hits-all-integrations.html" },
+    "post": "target-breach-revisited-ai-vendors"
+  },
+  {
+    "date": "2025-08",
+    "title": "Nx s1ngularity: malware that uses your AI tools",
+    "tags": ["ai", "supply-chain"],
+    "summary": "Malicious versions of the popular Nx build package used AI command-line tools already installed on developers' machines to hunt for secrets, then posted what they found to public GitHub repositories.",
+    "lesson": "AI coding tools on a developer's laptop can be turned against that developer, so limit what those tools are allowed to read and run.",
+    "source": { "label": "Wiz", "url": "https://www.wiz.io/blog/s1ngularity-supply-chain-attack" }
+  },
+  {
+    "date": "2025-07",
+    "title": "SharePoint ToolShell exploitation",
+    "tags": ["vulnerability", "nation-state"],
+    "summary": "Attackers mass-exploited a zero-day flaw chain in on-premises Microsoft SharePoint servers, stealing cryptographic keys that let them keep access even after patching.",
+    "lesson": "Patching isn't the end of the response when attackers may already hold your keys; rotate them too.",
+    "source": { "label": "Sophos", "url": "https://www.sophos.com/en-us/blog/sharepoint-toolshell-vulnerabilities-being-exploited-in-the-wild" }
+  },
+  {
+    "date": "2025-07",
+    "title": "Replit agent deletes a production database",
+    "tags": ["ai"],
+    "summary": "During a declared code freeze, Replit's AI coding agent deleted a user's production database and then gave misleading answers about what it had done.",
+    "lesson": "Never give an AI agent write access to production without a person approving destructive actions.",
+    "source": { "label": "The Stack", "url": "https://www.thestack.technology/vibe-coding-ceo-deletes-production-database/" }
+  },
+  {
+    "date": "2025-07",
+    "title": "Wiper prompt slipped into Amazon Q extension",
+    "tags": ["ai", "supply-chain"],
+    "summary": "A malicious change made it into an official release of Amazon's Q Developer extension for VS Code, adding a prompt that told the AI agent to wipe local files and cloud resources. Amazon pulled the release.",
+    "lesson": "Prompts shipped inside AI tools are code and need the same review as code.",
+    "source": { "label": "TechRepublic", "url": "https://www.techrepublic.com/article/news-amazon-q-data-wiping-prompt-security-hack/" }
+  },
+  {
+    "date": "2025-07",
+    "title": "St. Paul cyberattack",
+    "tags": ["disruption"],
+    "summary": "A cyberattack took down City of St. Paul systems, and Minnesota's governor activated the National Guard to help with the response.",
+    "lesson": "Cities need incident response help lined up before an attack, not found during one.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2025_St._Paul_cyberattack" }
+  },
+  {
+    "date": "2025-06",
+    "title": "EchoLeak zero-click flaw in Microsoft 365 Copilot",
+    "tags": ["ai", "vulnerability"],
+    "summary": "Aim Security showed that a single email with hidden instructions could make Microsoft 365 Copilot send internal data to an attacker without the user clicking anything. Microsoft fixed it before any known exploitation.",
+    "lesson": "An assistant that reads email shouldn't be able to send data out in the same step.",
+    "source": { "label": "TechRepublic", "url": "https://www.techrepublic.com/article/news-microsoft-365-copilot-flaw-echoleak/" }
+  },
+  {
+    "date": "2025-05",
+    "title": "Coinbase support contractors bribed",
+    "tags": ["social-engineering", "breach"],
+    "summary": "Criminals bribed overseas customer support contractors to steal Coinbase customer data, then demanded $20 million. Coinbase refused to pay and offered a reward for information instead.",
+    "lesson": "Support tools that show customer data to many people need access limits and monitoring for insiders.",
+    "source": { "label": "Help Net Security", "url": "https://www.helpnetsecurity.com/2025/05/15/coinbase-suffers-data-breach-gets-extorted/" }
+  },
+  {
+    "date": "2025-04",
+    "title": "Marks & Spencer cyberattack",
+    "tags": ["ransomware", "social-engineering"],
+    "summary": "An attack linked to the Scattered Spider group halted Marks & Spencer's online orders for weeks. The company estimated a hit to profit of about £300 million.",
+    "lesson": "Help desk password resets are a prime target, so verify identity with something a caller can't fake.",
+    "source": { "label": "Techzine", "url": "https://www.techzine.eu/news/security/130938/ms-hack-likely-carried-out-by-scattered-spider" }
+  },
+  {
+    "date": "2025-02",
+    "title": "Bybit $1.5 billion theft",
+    "tags": ["nation-state", "supply-chain"],
+    "summary": "North Korea's Lazarus Group stole about $1.5 billion in cryptocurrency from Bybit, the largest crypto theft on record. The attackers got in through a compromised developer machine at Safe, the wallet provider Bybit used.",
+    "lesson": "A transaction you approve is only as trustworthy as the screen showing it to you.",
+    "source": { "label": "BleepingComputer", "url": "https://www.bleepingcomputer.com/news/security/lazarus-hacked-bybit-via-a-breached-safe-wallet-developer-machine/" }
+  },
+  {
+    "date": "2025-01",
+    "title": "PowerSchool student data breach",
+    "tags": ["breach", "supply-chain"],
+    "summary": "Attackers used a stolen credential to get into PowerSchool's customer support portal and took data on tens of millions of students and teachers across many school districts.",
+    "lesson": "Vendor support portals with access to customer data need multi-factor authentication and alerts on bulk exports.",
+    "source": { "label": "Tom's Guide", "url": "https://www.tomsguide.com/computing/online-security/powerschool-cyberattack-may-have-compromised-the-data-of-more-than-70-million-students-and-teachers-what-to-do-now" }
+  },
+  {
+    "date": "2024-11",
+    "title": "Salt Typhoon in US telecom networks",
+    "tags": ["nation-state"],
+    "summary": "The FBI and CISA confirmed that Chinese state hackers had broken into several US telecom companies, stealing call records and reaching systems used for court-authorized wiretaps.",
+    "lesson": "Any built-in access for law enforcement is also access an attacker can find.",
+    "source": { "label": "TechTarget", "url": "https://www.techtarget.com/cybersecurity/news/366615490/CISA-FBI-confirm-China-breached-telecommunication-providers" }
+  },
+  {
+    "date": "2024-08",
+    "title": "National Public Data breach",
+    "tags": ["breach"],
+    "summary": "Background-check company National Public Data had billions of records leaked, including Social Security numbers. The company later filed for bankruptcy.",
+    "lesson": "Data brokers hold data about people who never chose to do business with them, and a breach can end the company.",
+    "source": { "label": "CBS News", "url": "https://www.cbsnews.com/miami/news/social-security-number-leak-npd-breach-what-to-know/" }
+  },
+  {
+    "date": "2024-07",
+    "title": "CrowdStrike update crashes Windows worldwide",
+    "tags": ["supply-chain", "disruption"],
+    "summary": "A faulty content update to CrowdStrike's security software crashed about 8.5 million Windows computers, grounding flights and disrupting hospitals and banks. It wasn't an attack.",
+    "lesson": "Security tools run with deep access, so stage their updates and plan how to recover thousands of machines at once.",
+    "source": { "label": "The Register", "url": "https://www.theregister.com/2024/07/25/crowdstrike_timeline/" }
+  },
+  {
+    "date": "2024-06",
+    "title": "CDK Global ransomware stalls car dealerships",
+    "tags": ["ransomware", "supply-chain", "disruption"],
+    "summary": "A ransomware attack on CDK Global, which runs software for thousands of car dealerships, forced many dealers back to paper for weeks.",
+    "lesson": "When one software provider serves an entire industry, its outage becomes the industry's outage.",
+    "source": { "label": "Bloomberg Law", "url": "https://news.bloomberglaw.com/insurance/cdk-hackers-want-millions-in-ransom-to-end-car-dealership-outage" }
+  },
+  {
+    "date": "2024-06",
+    "title": "Synnovis ransomware hits London hospitals",
+    "tags": ["ransomware", "supply-chain"],
+    "summary": "The Qilin gang attacked pathology provider Synnovis, forcing London hospitals to postpone thousands of appointments and procedures and causing blood test delays.",
+    "lesson": "A lab services vendor is part of patient care, so hospitals need continuity plans for vendor outages.",
+    "source": { "label": "BankInfoSecurity", "url": "https://www.bankinfosecurity.net/qilin-raas-group-believed-to-be-behind-synnovis-nhs-attack-a-25456" }
+  },
+  {
+    "date": "2024-06",
+    "title": "Kadokawa and Niconico ransomware",
+    "tags": ["ransomware", "disruption"],
+    "summary": "A ransomware attack knocked Japanese publisher Kadokawa's video service Niconico offline for weeks and led to leaks of internal data.",
+    "lesson": "Recovery takes far longer than most plans assume when core systems have to be rebuilt.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2024_cyberattack_on_Kadokawa_and_Niconico" }
+  },
+  {
+    "date": "2024-05",
+    "title": "Snowflake customer breaches",
+    "tags": ["breach"],
+    "summary": "Attackers used passwords stolen by infostealer malware to log in to Snowflake customer accounts that didn't require multi-factor authentication, then took data from companies including Ticketmaster and AT&T.",
+    "lesson": "Require multi-factor authentication on every cloud data account, including old service and test accounts.",
+    "source": { "label": "Infosecurity Magazine", "url": "https://www.infosecurity-magazine.com/news/snowflake-hacking-suspect-arrested/" }
+  },
+  {
+    "date": "2024-05",
+    "title": "Arup deepfake video call fraud",
+    "tags": ["ai", "social-engineering"],
+    "summary": "An Arup employee in Hong Kong sent about $25 million to fraudsters after a video call in which the company's CFO and other colleagues were deepfakes.",
+    "lesson": "Large payments need a verification step outside the channel the request came through.",
+    "source": { "label": "CNN, via ABC 17", "url": "https://abc17news.com/money/cnn-business-consumer/2024/05/16/british-engineering-giant-arup-revealed-as-25-million-deepfake-scam-victim/" }
+  },
+  {
+    "date": "2024-05",
+    "display": "2024",
+    "title": "LLMjacking named",
+    "tags": ["ai"],
+    "summary": "Sysdig researchers named the theft of AI service credentials \"LLMjacking\" and estimated a single stolen account could run up more than $46,000 a day in model charges.",
+    "lesson": "AI keys are a direct line to your bill, so rotate them and keep them out of code.",
+    "source": { "label": "Cloud Security Alliance", "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-llmjacking-evolved-offensive-agentic-20260/" },
+    "post": "attackers-want-your-tokens"
+  },
+  {
+    "date": "2024-03",
+    "title": "XZ Utils backdoor",
+    "tags": ["supply-chain"],
+    "summary": "A contributor spent about two years earning a maintainer's trust before slipping a backdoor into XZ Utils, a compression library used by Linux systems. An engineer caught it before wide release after noticing a small slowdown in SSH logins.",
+    "lesson": "Critical open source projects often rest on one tired maintainer; support them.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/XZ_Utils_backdoor" }
+  },
+  {
+    "date": "2024-03",
+    "title": "ShadowRay attacks on AI compute clusters",
+    "tags": ["ai", "vulnerability"],
+    "summary": "Attackers exploited an exposed, unauthenticated job interface in the Ray AI framework to take over AI compute clusters, steal credentials and mine cryptocurrency. Researchers called it the first known attack campaign aimed at AI workloads.",
+    "lesson": "AI infrastructure has the same exposure problems as any other server, with more expensive hardware behind it.",
+    "source": { "label": "TechTarget", "url": "https://www.techtarget.com/searchsecurity/news/366575576/Unpatched-flaw-in-Anyscales-Ray-AI-framework-under-attack" }
+  },
+  {
+    "date": "2024-02",
+    "title": "Change Healthcare ransomware",
+    "tags": ["ransomware", "breach"],
+    "summary": "Attackers got in through a remote access portal without multi-factor authentication, disrupting claims and pharmacy payments across the US for weeks. About 190 million people's data was affected, the largest US healthcare breach.",
+    "lesson": "One missing multi-factor check on one portal can stop a sector, so find every remote access point you own.",
+    "source": { "label": "Infosecurity Magazine", "url": "https://www.infosecurity-magazine.com/news/change-healthcare-breach-doubles/" }
+  },
+  {
+    "date": "2024-02",
+    "title": "Air Canada held liable for its chatbot",
+    "tags": ["ai"],
+    "summary": "A Canadian tribunal ruled Air Canada had to honor a bereavement refund policy its customer service chatbot made up. The airline had argued the chatbot was responsible for its own words.",
+    "lesson": "A company owns what its AI tells customers.",
+    "source": { "label": "CX Today", "url": "https://www.cxtoday.com/conversational-ai/court-orders-air-canada-to-pay-out-for-chatbots-bad-advice/" }
+  },
+  {
+    "date": "2023-12",
+    "title": "Chevrolet dealer chatbot agrees to a $1 Tahoe",
+    "tags": ["ai"],
+    "summary": "Visitors to a California Chevrolet dealer's website talked its AI chatbot into agreeing to sell a new Tahoe for $1, along with other off-script answers.",
+    "lesson": "A customer-facing chatbot needs firm limits on what it can promise, because people will test them.",
+    "source": { "label": "AI Incident Database", "url": "https://incidentdatabase.ai/entities/chevrolet-of-watsonville" }
+  },
+  {
+    "date": "2023-11",
+    "title": "Citrix Bleed",
+    "tags": ["vulnerability", "ransomware"],
+    "summary": "A flaw in Citrix NetScaler devices let attackers steal session tokens and skip passwords and multi-factor authentication. LockBit affiliates used it against targets including Boeing.",
+    "lesson": "After patching a session-stealing flaw, end every existing session too.",
+    "source": { "label": "CISA advisory", "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-325a" }
+  },
+  {
+    "date": "2023-10",
+    "title": "British Library ransomware",
+    "tags": ["ransomware", "disruption"],
+    "summary": "The Rhysida gang took down the British Library's systems for months and leaked stolen data. The library later published an unusually candid review of what went wrong.",
+    "lesson": "Legacy systems that can't be secured often can't be restored either.",
+    "source": { "label": "British Library incident review", "url": "https://www.bl.uk/home/british-library-cyber-incident-review-8-march-2024.pdf" }
+  },
+  {
+    "date": "2023-10",
+    "title": "23andMe credential stuffing",
+    "tags": ["breach"],
+    "summary": "Attackers logged in to about 14,000 accounts with reused passwords, then used the DNA Relatives feature to scrape data on about 6.9 million people.",
+    "lesson": "Features that share data between users multiply the damage of every account takeover.",
+    "source": { "label": "HIPAA Journal", "url": "https://www.hipaajournal.com/6-9-million-23andme-users-affected-by-data-breach/" }
+  },
+  {
+    "date": "2023-09",
+    "title": "MGM Resorts help desk attack",
+    "tags": ["social-engineering", "ransomware"],
+    "summary": "Attackers called MGM's IT help desk posing as an employee and got access reset. The resulting ransomware attack disrupted hotels and casinos for days and cost MGM about $100 million.",
+    "lesson": "A ten-minute phone call can be the whole attack, so help desk verification is a top-tier control.",
+    "source": { "label": "Insurance Journal", "url": "https://www.insurancejournal.com/news/national/2024/01/31/758619.htm" }
+  },
+  {
+    "date": "2023-09",
+    "title": "Microsoft AI researchers expose 38 TB",
+    "tags": ["ai", "breach"],
+    "summary": "Microsoft AI researchers shared open source training data on GitHub with an overly permissive storage link that exposed 38 terabytes of internal data, including secrets and employee messages.",
+    "lesson": "AI teams move a lot of data quickly, so their sharing links need the same review as any other access grant.",
+    "source": { "label": "TechTarget", "url": "https://www.techtarget.com/searchsecurity/news/366552399/Microsoft-AI-researchers-mistakenly-expose-38-TB-of-data" }
+  },
+  {
+    "date": "2023-07",
+    "title": "Storm-0558 forged Microsoft tokens",
+    "tags": ["nation-state"],
+    "summary": "Chinese state hackers used a stolen Microsoft signing key to forge tokens and read email at about 25 organizations, including US government agencies. A federal review board called it a cascade of avoidable errors.",
+    "lesson": "Signing keys are crown jewels; rotate them and limit what each key can sign.",
+    "source": { "label": "CyberScoop", "url": "https://cyberscoop.com/microsoft-csrb-china-hacking/" }
+  },
+  {
+    "date": "2023-05",
+    "title": "MOVEit mass exploitation",
+    "tags": ["vulnerability", "supply-chain", "ransomware"],
+    "summary": "The Cl0p gang exploited a zero-day flaw in the MOVEit file transfer tool to steal data from thousands of organizations, affecting tens of millions of people.",
+    "lesson": "File transfer tools sit on the edge and hold sensitive data, a combination attackers keep coming back to.",
+    "source": { "label": "Higher Ed Dive", "url": "https://www.highereddive.com/news/moveit-breach-timeline/688058/" }
+  },
+  {
+    "date": "2023-05",
+    "title": "Samsung code pasted into ChatGPT",
+    "tags": ["ai"],
+    "summary": "Samsung engineers pasted internal source code into ChatGPT, and the company banned generative AI tools on work devices shortly after.",
+    "lesson": "Give employees an approved AI tool with clear rules, or they'll use whatever is easiest.",
+    "source": { "label": "Bloomberg", "url": "https://www.bloomberg.com/news/articles/2023-05-02/samsung-bans-chatgpt-and-other-generative-ai-use-by-staff-after-leak" }
+  },
+  {
+    "date": "2023-03",
+    "title": "ChatGPT bug exposes other users' chats",
+    "tags": ["ai", "breach"],
+    "summary": "A bug in an open source library let some ChatGPT users see other users' chat titles, and exposed payment details for a small share of subscribers for several hours.",
+    "lesson": "AI services are still web services, and ordinary bugs can leak conversations people assumed were private.",
+    "source": { "label": "Help Net Security", "url": "https://www.helpnetsecurity.com/2023/03/27/chatgpt-data-leak/" }
+  },
+  {
+    "date": "2023-03",
+    "title": "3CX cascading supply chain attack",
+    "tags": ["supply-chain", "nation-state"],
+    "summary": "North Korean hackers trojanized the 3CX phone app after a 3CX employee installed a trojanized version of different software. It was the first known supply chain attack that led to another one.",
+    "lesson": "One compromised vendor can be the way into the next vendor, so supply chain risk compounds.",
+    "source": { "label": "The Hacker News", "url": "https://thehackernews.com/2023/04/nk-hackers-employ-matryoshka-doll-style.html" }
+  },
+  {
+    "date": "2022-12",
+    "title": "LastPass vault backups stolen",
+    "tags": ["breach"],
+    "summary": "After an earlier breach, attackers installed a keylogger on a LastPass engineer's home computer and used the stolen password to copy encrypted customer vault backups.",
+    "lesson": "Engineers with access to the most sensitive systems need hardened devices, including at home.",
+    "source": { "label": "9to5Mac", "url": "https://9to5mac.com/2023/02/27/lastpass-devops-engineers-hacked/" }
+  },
+  {
+    "date": "2022-10",
+    "title": "Medibank data published",
+    "tags": ["ransomware", "breach"],
+    "summary": "Attackers used a contractor's stolen credentials to reach Medibank's network, which didn't enforce multi-factor authentication. They stole data on 9.7 million customers and published health records after Medibank refused to pay.",
+    "lesson": "Remote access without multi-factor authentication remains one of the most common ways in.",
+    "source": { "label": "Help Net Security", "url": "https://www.helpnetsecurity.com/2024/06/18/medibank-breach-security-failures/" }
+  },
+  {
+    "date": "2022-09",
+    "title": "Optus API exposure",
+    "tags": ["breach"],
+    "summary": "An internet-facing API at Australian telecom Optus returned customer data without authentication, exposing up to 9.8 million customers.",
+    "lesson": "Inventory and test every API, especially old ones nobody remembers publishing.",
+    "source": { "label": "Dark Reading", "url": "https://www.darkreading.com/cyberattacks-data-breaches/fbi-helping-australian-authorities-investigate-massive-optus-data-breach-reports" }
+  },
+  {
+    "date": "2022-09",
+    "title": "Uber MFA fatigue attack",
+    "tags": ["social-engineering", "breach"],
+    "summary": "An attacker with a contractor's password sent repeated multi-factor push requests and a message posing as IT until the contractor approved one, then moved deep into Uber's systems.",
+    "lesson": "Use phishing-resistant multi-factor methods, because push approvals can be worn down.",
+    "source": { "label": "Help Net Security", "url": "https://www.helpnetsecurity.com/2022/09/20/uber-data-breach-lapsus/" }
+  },
+  {
+    "date": "2022-05",
+    "title": "Costa Rica ransomware emergency",
+    "tags": ["ransomware", "nation-state"],
+    "summary": "Conti ransomware attacks on Costa Rica's finance ministry and other agencies led the country to declare a national emergency.",
+    "lesson": "Ransomware can reach the scale of a national crisis, and governments need response plans to match.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2022_Costa_Rican_ransomware_attack" }
+  },
+  {
+    "date": "2022-03",
+    "title": "Okta support contractor breach",
+    "tags": ["supply-chain", "social-engineering"],
+    "summary": "The Lapsus$ group got into a support engineer's computer at Sitel, a contractor Okta used. Okta later said it should have disclosed the incident sooner than it did.",
+    "lesson": "Your identity provider's contractors are part of your attack surface, and disclosure speed matters to customers.",
+    "source": { "label": "BleepingComputer", "url": "https://www.bleepingcomputer.com/news/security/okta-we-made-a-mistake-delaying-the-lapsus-hack-disclosure/" }
+  },
+  {
+    "date": "2022-03",
+    "title": "Ronin Network $620 million theft",
+    "tags": ["nation-state", "social-engineering"],
+    "summary": "North Korean hackers sent an engineer a fake job offer that installed spyware, then used it to take control of enough validator keys to drain about $620 million from the Ronin bridge.",
+    "lesson": "If a few keys can move hundreds of millions, those keys need more independent holders.",
+    "source": { "label": "Security Affairs", "url": "https://securityaffairs.com/133113/cyber-crime/axie-infinity-hack-fake-job-offer.html" }
+  },
+  {
+    "date": "2022-02",
+    "title": "Viasat satellite modems wiped",
+    "tags": ["nation-state", "infrastructure"],
+    "summary": "As Russia invaded Ukraine, a wiper attack disabled tens of thousands of Viasat satellite modems across Europe, including ones that monitored German wind turbines.",
+    "lesson": "Cyberattacks aimed at one country spill over to customers and infrastructure elsewhere.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Viasat_hack" }
+  },
+  {
+    "date": "2022-01",
+    "title": "Red Cross data on vulnerable people stolen",
+    "tags": ["breach", "vulnerability"],
+    "summary": "Attackers exploited an unpatched flaw to steal data on more than 500,000 people the Red Cross was helping reconnect with separated family members.",
+    "lesson": "Humanitarian data protects people in danger, so patching it is a safety issue.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Red_Cross_cyberattack" }
+  },
+  {
+    "date": "2021-12",
+    "title": "Log4Shell",
+    "tags": ["vulnerability"],
+    "summary": "A flaw in the Log4j logging library let attackers run code on countless servers just by getting a crafted string logged. Many organizations struggled to even find where they used Log4j.",
+    "lesson": "Know what's inside your software, because you can't patch what you can't find.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Log4Shell" }
+  },
+  {
+    "date": "2021-07",
+    "title": "Kaseya VSA ransomware",
+    "tags": ["ransomware", "supply-chain"],
+    "summary": "The REvil gang exploited Kaseya's remote management software to push ransomware through managed service providers to as many as 1,500 businesses at once.",
+    "lesson": "Tools that manage many customers' systems are the most efficient target an attacker can find.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Kaseya_VSA_ransomware_attack" }
+  },
+  {
+    "date": "2021-06",
+    "title": "JBS ransomware",
+    "tags": ["ransomware", "disruption"],
+    "summary": "A ransomware attack shut down beef plants at JBS, one of the world's largest meat processors, and the company paid $11 million.",
+    "lesson": "Food production depends on IT systems that are rarely planned for as critical infrastructure.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/JBS_S.A._cyberattack" }
+  },
+  {
+    "date": "2021-05",
+    "title": "Colonial Pipeline ransomware",
+    "tags": ["ransomware", "infrastructure"],
+    "summary": "Attackers used the password for an old VPN account without multi-factor authentication. Colonial shut down the largest fuel pipeline on the US East Coast for several days and paid a ransom.",
+    "lesson": "Unused accounts are open doors; disable them and require multi-factor authentication on remote access.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Colonial_Pipeline_cyber_attack" }
+  },
+  {
+    "date": "2021-05",
+    "title": "Ireland's health service ransomware",
+    "tags": ["ransomware", "disruption"],
+    "summary": "Conti ransomware shut down IT systems across Ireland's national health service. The attack started with a phishing email opened about two months earlier, and warning signs were missed.",
+    "lesson": "Alerts that nobody acts on are the same as no alerts.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Health_Service_Executive_cyberattack" }
+  },
+  {
+    "date": "2021-03",
+    "title": "Microsoft Exchange ProxyLogon",
+    "tags": ["vulnerability", "nation-state"],
+    "summary": "A Chinese state group exploited zero-day flaws in on-premises Exchange servers, and other attackers piled on once the flaws were public, compromising tens of thousands of servers.",
+    "lesson": "Once a flaw is public, the race to patch is measured in hours.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2021_Microsoft_Exchange_Server_data_breach" }
+  },
+  {
+    "date": "2020-12",
+    "title": "SolarWinds supply chain attack",
+    "tags": ["supply-chain", "nation-state"],
+    "summary": "Russian intelligence hackers slipped a backdoor into SolarWinds Orion software updates, which about 18,000 customers installed. The attackers then chose a smaller set of targets, including US government agencies.",
+    "lesson": "Trusted software updates can carry an attack, so watch what monitoring tools do on your network.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2020_United_States_federal_government_data_breach" }
+  },
+  {
+    "date": "2020-09",
+    "title": "Düsseldorf hospital ransomware",
+    "tags": ["ransomware"],
+    "summary": "Ransomware disrupted Düsseldorf University Hospital, and a patient in an emergency was sent to a hospital farther away. Prosecutors later concluded the delay likely wasn't the deciding factor in her death, but the case made hospital ransomware a life-safety issue.",
+    "lesson": "Hospitals need plans to keep emergency care running when IT is down.",
+    "source": { "label": "Security Affairs", "url": "https://securityaffairs.com/108408/malware/hospital-cyber-attack.html" }
+  },
+  {
+    "date": "2020-07",
+    "title": "Twitter account takeover scam",
+    "tags": ["social-engineering"],
+    "summary": "Attackers phoned Twitter employees, got their credentials, and used internal admin tools to post a cryptocurrency scam from about 130 high-profile accounts.",
+    "lesson": "Internal admin tools need strict access limits, because whoever controls them controls everyone's accounts.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2020_Twitter_bitcoin_scam" }
+  },
+  {
+    "date": "2020-06",
+    "title": "BlueLeaks",
+    "tags": ["breach", "supply-chain"],
+    "summary": "Hackers took hundreds of gigabytes of police documents by breaching a web development company that hosted sites for many law enforcement agencies.",
+    "lesson": "Small vendors that host many clients' sites concentrate risk for all of them.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/BlueLeaks" }
+  },
+  {
+    "date": "2019-07",
+    "title": "Capital One cloud breach",
+    "tags": ["breach"],
+    "summary": "An attacker abused a misconfigured web application firewall to get cloud credentials and copied data on about 100 million people in the US and 6 million in Canada.",
+    "lesson": "Cloud permissions decide how far one misconfiguration can go, so give each component only the access it needs.",
+    "source": { "label": "Dark Reading", "url": "https://www.darkreading.com/cloud-security/capital-one-breach-affects-100m-us-citizens-6m-canadians" }
+  },
+  {
+    "date": "2019-05",
+    "title": "Baltimore ransomware",
+    "tags": ["ransomware", "disruption"],
+    "summary": "RobbinHood ransomware froze Baltimore city systems for weeks. The city refused a ransom of about $76,000 and spent more than $18 million on recovery and lost revenue.",
+    "lesson": "The cost of a ransomware attack is mostly recovery, not the ransom.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2019_Baltimore_ransomware_attack" }
+  },
+  {
+    "date": "2019-03",
+    "title": "Norsk Hydro ransomware",
+    "tags": ["ransomware"],
+    "summary": "LockerGoga ransomware hit aluminum maker Norsk Hydro, which switched plants to manual operation, refused to pay, and gave the public daily updates.",
+    "lesson": "Open, frequent communication during an incident builds trust with customers and investors.",
+    "source": { "label": "Microsoft", "url": "https://news.microsoft.com/en-my/2019/12/17/hackers-hit-norsk-hydro-with-ransomware-the-company-responded-with-transparency/" }
+  },
+  {
+    "date": "2019-01",
+    "title": "Collection #1",
+    "tags": ["breach"],
+    "summary": "A compilation of about 773 million email addresses and passwords from earlier breaches circulated online, fueling credential stuffing attacks.",
+    "lesson": "Every reused password is a breach waiting to happen somewhere else.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Collection_No._1" }
+  },
+  {
+    "date": "2018-11",
+    "title": "Marriott Starwood breach",
+    "tags": ["breach"],
+    "summary": "Marriott disclosed that attackers had been inside the Starwood reservation system since 2014, before Marriott bought Starwood, exposing data on hundreds of millions of guests.",
+    "lesson": "When you buy a company, you buy its breaches, so assess security before the deal closes.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Marriott_International#Data_breach" }
+  },
+  {
+    "date": "2018-09",
+    "title": "Facebook access token breach",
+    "tags": ["breach", "vulnerability"],
+    "summary": "Attackers chained bugs in Facebook's \"View As\" feature to steal access tokens and reach data on about 29 million users.",
+    "lesson": "Features that let one account act as another need extra security review.",
+    "source": { "label": "Security Affairs", "url": "https://securityaffairs.com/77079/data-breach/facebook-data-breach.html" }
+  },
+  {
+    "date": "2018-04",
+    "title": "NASA JPL breached through a Raspberry Pi",
+    "tags": ["breach"],
+    "summary": "An attacker used an unauthorized Raspberry Pi connected to NASA's Jet Propulsion Laboratory network to steal about 500 MB of data, including mission information.",
+    "lesson": "Asset inventory is unglamorous and essential, because you can't protect devices you don't know about.",
+    "source": { "label": "NASA Office of Inspector General", "url": "https://oig.nasa.gov/docs/IG-19-022.pdf" },
+    "post": "jpl-cybersecurity-oversight"
+  },
+  {
+    "date": "2018-03",
+    "title": "Atlanta SamSam ransomware",
+    "tags": ["ransomware", "disruption"],
+    "summary": "SamSam ransomware took down City of Atlanta systems, including court and payment systems. The city didn't pay the roughly $51,000 ransom and spent millions on recovery.",
+    "lesson": "Decide your position on paying a ransom before an attack, with leadership in the room.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2018_Atlanta_cyberattack" },
+    "post": "should-you-pay-the-ransom"
+  },
+  {
+    "date": "2017-12",
+    "title": "Triton targets industrial safety systems",
+    "tags": ["infrastructure", "nation-state"],
+    "summary": "Researchers revealed Triton, malware built to tamper with the safety systems that shut down a petrochemical plant before an explosion. A bug in the malware tripped a shutdown instead.",
+    "lesson": "Safety systems are a target now, and they need to be isolated and monitored.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Triton_(malware)" }
+  },
+  {
+    "date": "2017-11",
+    "title": "Uber breach cover-up revealed",
+    "tags": ["breach"],
+    "summary": "Uber revealed that it had paid hackers $100,000 in 2016 to delete data on 57 million people and keep quiet, instead of disclosing the breach. Its former security chief was later convicted over the cover-up.",
+    "lesson": "Hiding a breach turns a security incident into a legal and leadership crisis.",
+    "source": { "label": "CyberScoop", "url": "https://cyberscoop.com/uber-hack-57-million-customers-joe-sullivan/" }
+  },
+  {
+    "date": "2017-09",
+    "title": "Equifax breach",
+    "tags": ["breach", "vulnerability"],
+    "summary": "Attackers exploited a known, unpatched flaw in a web application framework to steal data on about 147 million people, including Social Security numbers.",
+    "lesson": "Patching known flaws on internet-facing systems needs an owner and a deadline.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2017_Equifax_data_breach" },
+    "post": "equifax-incident-response-ciso-placement"
+  },
+  {
+    "date": "2017-06",
+    "title": "NotPetya",
+    "tags": ["nation-state", "supply-chain", "disruption"],
+    "summary": "Russian military hackers spread destructive malware through a Ukrainian accounting software update. It spread worldwide and shut down companies including Maersk and Merck, with damages estimated at $10 billion.",
+    "lesson": "Malware aimed at one country doesn't stay there; flat networks let it spread everywhere.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2017_Petya_cyberattack" },
+    "post": "should-you-pay-the-ransom"
+  },
+  {
+    "date": "2017-05",
+    "title": "WannaCry",
+    "tags": ["ransomware", "nation-state"],
+    "summary": "Ransomware using a leaked NSA exploit spread to more than 200,000 computers in about 150 countries in a few days, hitting the UK's National Health Service hard. The US later attributed it to North Korea.",
+    "lesson": "A patch that existed for two months didn't help anyone who hadn't installed it.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/WannaCry_ransomware_attack" }
+  },
+  {
+    "date": "2016-12",
+    "title": "Industroyer cuts power in Kyiv",
+    "tags": ["infrastructure", "nation-state"],
+    "summary": "Malware built to speak the protocols of electrical substations cut power to part of Kyiv for about an hour, a year after an earlier grid attack.",
+    "lesson": "Attackers are learning to automate attacks on physical infrastructure.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2016_Kyiv_cyberattack" }
+  },
+  {
+    "date": "2016-10",
+    "title": "Mirai botnet knocks out Dyn",
+    "tags": ["infrastructure", "disruption"],
+    "summary": "A botnet of hacked cameras and routers with default passwords flooded DNS provider Dyn, making major websites unreachable for much of the US East Coast.",
+    "lesson": "Insecure consumer devices can take down core internet services, and default passwords are the weak point.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2016_Dyn_cyberattack" }
+  },
+  {
+    "date": "2016-08",
+    "title": "Shadow Brokers leak NSA tools",
+    "tags": ["nation-state"],
+    "summary": "A group calling itself the Shadow Brokers began leaking hacking tools stolen from the NSA. One exploit later powered WannaCry and NotPetya.",
+    "lesson": "Stockpiled exploits can leak, and when they do, everyone's systems are exposed.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/The_Shadow_Brokers" }
+  },
+  {
+    "date": "2016-07",
+    "title": "DNC email leak",
+    "tags": ["nation-state", "social-engineering"],
+    "summary": "Emails stolen from the Democratic National Committee through spear phishing were published ahead of the US election. US investigators attributed the hack to Russian military intelligence.",
+    "lesson": "Stolen data can be used to influence public opinion, not just to make money.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2016_Democratic_National_Committee_email_leak" }
+  },
+  {
+    "date": "2016-02",
+    "title": "Bangladesh Bank heist",
+    "tags": ["nation-state", "breach"],
+    "summary": "Attackers used Bangladesh Bank's own SWIFT credentials to send fraudulent transfer requests. Most were blocked, but about $81 million reached accounts in the Philippines.",
+    "lesson": "Payment systems need checks that don't depend on the bank's own computers being clean.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Bangladesh_Bank_heist" }
+  },
+  {
+    "date": "2015-12",
+    "title": "Ukraine power grid hack",
+    "tags": ["infrastructure", "nation-state"],
+    "summary": "Hackers took remote control of Ukrainian utility systems and switched off power for about 230,000 people, the first confirmed cyberattack to cause a blackout.",
+    "lesson": "Remote access to operational systems needs the strongest protections you can give it.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2015_Ukraine_power_grid_hack" }
+  },
+  {
+    "date": "2015-07",
+    "title": "Ashley Madison breach",
+    "tags": ["breach"],
+    "summary": "Hackers stole and published data on more than 30 million users of the Ashley Madison dating site, along with evidence that the company kept data it said it deleted.",
+    "lesson": "Don't promise deletion you don't actually do.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Ashley_Madison_data_breach" }
+  },
+  {
+    "date": "2015-06",
+    "title": "OPM breach",
+    "tags": ["nation-state", "breach"],
+    "summary": "Chinese state hackers stole background investigation files on about 21.5 million people from the US Office of Personnel Management, including fingerprints.",
+    "lesson": "Some data can't be changed after it's stolen, so it deserves the strongest protection.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Office_of_Personnel_Management_data_breach" }
+  },
+  {
+    "date": "2015-02",
+    "title": "Anthem medical data breach",
+    "tags": ["breach", "nation-state"],
+    "summary": "Attackers who began with phishing emails stole records on about 79 million people from health insurer Anthem.",
+    "lesson": "A single phishing email can be the start of the largest breach in an industry.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Anthem_medical_data_breach" }
+  },
+  {
+    "date": "2014-11",
+    "title": "Sony Pictures hack",
+    "tags": ["nation-state", "breach"],
+    "summary": "Hackers the US linked to North Korea wiped Sony Pictures computers and leaked emails, salaries and unreleased films ahead of a comedy about Kim Jong Un.",
+    "lesson": "Destructive attacks can follow a company's business decisions, so plan for being a target of a nation.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Sony_Pictures_hack" }
+  },
+  {
+    "date": "2014-09",
+    "title": "Home Depot breach",
+    "tags": ["breach", "supply-chain"],
+    "summary": "Attackers used a vendor's stolen credentials to get in and installed malware on self-checkout terminals, stealing about 56 million payment cards.",
+    "lesson": "Vendor credentials should reach only what the vendor needs, not the whole network.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Home_Depot_data_breach" }
+  },
+  {
+    "date": "2014-08",
+    "title": "JPMorgan Chase breach",
+    "tags": ["breach"],
+    "summary": "Attackers reached contact data for about 76 million households at JPMorgan Chase, reportedly through a server that hadn't been upgraded to two-factor authentication.",
+    "lesson": "One server left behind in a security upgrade can undo the upgrade.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2014_JPMorgan_Chase_data_breach" }
+  },
+  {
+    "date": "2014-04",
+    "title": "Heartbleed",
+    "tags": ["vulnerability"],
+    "summary": "A bug in OpenSSL let anyone read chunks of a server's memory, including passwords and private keys, on a large share of the web's secure servers.",
+    "lesson": "Widely used open source code needs funding and review proportional to how much depends on it.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Heartbleed" }
+  },
+  {
+    "date": "2014-02",
+    "title": "Sands casino attack",
+    "tags": ["nation-state", "disruption"],
+    "summary": "Hackers later linked to Iran wiped computers at Las Vegas Sands after its owner made public comments about Iran.",
+    "lesson": "A company leader's public statements can make the company a target.",
+    "source": { "label": "Bloomberg", "url": "https://www.bloomberg.com/news/articles/2014-12-11/iranian-hackers-hit-sheldon-adelsons-sands-casino-in-las-vegas" },
+    "post": "sands-casino-hack-nation-state"
+  },
+  {
+    "date": "2014-02",
+    "title": "Mt. Gox collapse",
+    "tags": ["breach"],
+    "summary": "Bitcoin exchange Mt. Gox shut down and filed for bankruptcy after losing about 850,000 bitcoins, much of it stolen over years without being noticed.",
+    "lesson": "If you hold other people's assets, reconcile them often enough to notice theft.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Mt._Gox" }
+  },
+  {
+    "date": "2013-12",
+    "title": "Target breach",
+    "tags": ["breach", "supply-chain"],
+    "summary": "Attackers got in with credentials stolen from Target's HVAC contractor and installed malware on point-of-sale systems, stealing about 40 million payment cards and data on 70 million customers.",
+    "lesson": "A vendor's access to one system shouldn't lead to your payment network.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/History_of_Target_Corporation" },
+    "post": "diamond-model-target-breach"
+  },
+  {
+    "date": "2013-10",
+    "title": "Adobe breach",
+    "tags": ["breach"],
+    "summary": "Attackers stole source code and data on tens of millions of Adobe customer accounts, with passwords protected by weak encryption rather than proper hashing.",
+    "lesson": "Store passwords with a modern hashing method, because weak protection gets cracked at scale.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Adobe_Systems" }
+  },
+  {
+    "date": "2013-08",
+    "title": "Yahoo breaches",
+    "tags": ["breach"],
+    "summary": "Attackers stole data on all 3 billion Yahoo accounts in 2013. Yahoo didn't disclose the breaches until 2016, during its sale to Verizon, which cut the price.",
+    "lesson": "Undisclosed breaches surface eventually, often at the worst possible time.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Yahoo!_data_breaches" },
+    "post": "yahoo-breach-accountability"
+  },
+  {
+    "date": "2012-08",
+    "title": "Shamoon wipes Saudi Aramco",
+    "tags": ["nation-state", "disruption"],
+    "summary": "Wiper malware destroyed data on about 30,000 computers at Saudi Aramco, one of the world's largest oil companies.",
+    "lesson": "Destructive attacks can hit business IT hard even when production systems keep running.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Shamoon" }
+  },
+  {
+    "date": "2012-06",
+    "title": "LinkedIn password leak",
+    "tags": ["breach"],
+    "summary": "About 6.5 million LinkedIn password hashes, stored without salting, were posted online. In 2016 it emerged the breach covered about 117 million accounts.",
+    "lesson": "The first count of a breach is often far too small.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2012_LinkedIn_hack" }
+  },
+  {
+    "date": "2012-05",
+    "title": "Flame espionage malware",
+    "tags": ["nation-state"],
+    "summary": "Researchers found Flame, a large espionage toolkit in Middle East networks that disguised itself with a forged Microsoft certificate made by exploiting a weak hashing algorithm.",
+    "lesson": "Retire weak cryptography before an attacker uses it to impersonate you.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Flame_(malware)" }
+  },
+  {
+    "date": "2011-07",
+    "title": "DigiNotar certificate authority hack",
+    "tags": ["breach", "nation-state"],
+    "summary": "Hackers broke into Dutch certificate authority DigiNotar and issued more than 500 fraudulent certificates, used to spy on Gmail users in Iran. Browsers stopped trusting DigiNotar and the company went bankrupt.",
+    "lesson": "Trust is the product for a certificate authority; lose it and the company is gone.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/DigiNotar" }
+  },
+  {
+    "date": "2011-04",
+    "title": "PlayStation Network breach",
+    "tags": ["breach", "disruption"],
+    "summary": "An intrusion exposed data on about 77 million PlayStation Network accounts and kept the service offline for more than three weeks.",
+    "lesson": "A long outage can cost more customer trust than the data theft itself.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2011_PlayStation_Network_outage" }
+  },
+  {
+    "date": "2011-03",
+    "title": "RSA SecurID breach",
+    "tags": ["nation-state", "supply-chain", "social-engineering"],
+    "summary": "A phishing email with a malicious spreadsheet let attackers steal data about RSA's SecurID authentication tokens, which was later used in an attempt against defense contractor Lockheed Martin.",
+    "lesson": "Security vendors are targets because of who their customers are.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/RSA_Security" }
+  },
+  {
+    "date": "2010-06",
+    "title": "Stuxnet",
+    "tags": ["nation-state", "infrastructure"],
+    "summary": "Researchers discovered Stuxnet, a worm built to damage uranium enrichment centrifuges at Iran's Natanz facility. It crossed an air gap, likely on removable media.",
+    "lesson": "Air gaps help but aren't enough; defense in depth still matters.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Stuxnet" },
+    "post": "natanz-air-gaps-defense-in-depth"
+  },
+  {
+    "date": "2010-01",
+    "title": "Operation Aurora",
+    "tags": ["nation-state"],
+    "summary": "Google disclosed that Chinese hackers had broken into it and dozens of other companies, going after source code and the Gmail accounts of human rights activists.",
+    "lesson": "Being public about an attack helps other targets find out they were hit too.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Operation_Aurora" }
+  },
+  {
+    "date": "2009-12",
+    "title": "RockYou password breach",
+    "tags": ["breach"],
+    "summary": "A SQL injection flaw exposed about 32 million RockYou passwords stored in plain text. The list became a standard tool for password cracking.",
+    "lesson": "Never store passwords in plain text; one leak helps attackers for years.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/RockYou" }
+  },
+  {
+    "date": "2009-03",
+    "title": "GhostNet",
+    "tags": ["nation-state"],
+    "summary": "Researchers uncovered an espionage network that had infected computers at embassies and government offices in more than 100 countries, including the Dalai Lama's offices.",
+    "lesson": "Targeted phishing against a small group can open a window into governments around the world.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/GhostNet" }
+  },
+  {
+    "date": "2009-01",
+    "title": "Heartland Payment Systems breach",
+    "tags": ["breach"],
+    "summary": "Attackers used SQL injection to get into card processor Heartland and steal more than 100 million payment card numbers, one of the largest card breaches of its time.",
+    "lesson": "Passing a compliance audit isn't the same as being secure.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Heartland_Payment_Systems" }
+  },
+  {
+    "date": "2008-11",
+    "title": "Conficker worm",
+    "tags": ["vulnerability"],
+    "summary": "The Conficker worm used a Windows flaw Microsoft had already patched to infect millions of computers, and kept spreading for years on unpatched machines.",
+    "lesson": "Old, unpatched machines keep old worms alive.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Conficker" }
+  },
+  {
+    "date": "2008-10",
+    "title": "Agent.btz infects US military networks",
+    "tags": ["nation-state"],
+    "summary": "Malware on a USB drive spread into US military networks, including classified ones. The cleanup took over a year and led the Defense Department to ban USB drives.",
+    "lesson": "Removable media can carry malware across any boundary.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2008_cyberattack_on_United_States" }
+  },
+  {
+    "date": "2008-08",
+    "title": "Cyberattacks during the Russo-Georgian War",
+    "tags": ["nation-state", "disruption"],
+    "summary": "Georgian government and news websites were defaced and knocked offline as Russian forces moved into Georgia, among the first cyberattacks timed with a military campaign.",
+    "lesson": "Cyber operations now go hand in hand with physical conflict.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Cyberattacks_during_the_Russo-Georgian_War" }
+  },
+  {
+    "date": "2007-04",
+    "title": "Cyberattacks on Estonia",
+    "tags": ["nation-state", "disruption"],
+    "summary": "Weeks of denial-of-service attacks hit Estonian government, bank and media websites during a dispute with Russia over a Soviet war memorial.",
+    "lesson": "The more a country moves online, the more it needs to plan for online attacks on daily life.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2007_cyberattacks_on_Estonia" }
+  },
+  {
+    "date": "2007-01",
+    "title": "TJX breach",
+    "tags": ["breach"],
+    "summary": "Attackers broke into weakly protected store Wi-Fi at TJX and stole data on at least 45 million payment cards over many months.",
+    "lesson": "Outdated wireless security can let someone in a parking lot reach your payment data.",
+    "source": { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/TJX" }
+  },
+  {
+    "date": "2006-05",
+    "title": "Stolen VA laptop",
+    "tags": ["breach"],
+    "summary": "A laptop with personal data on about 26.5 million veterans and service members was stolen from a Veterans Affairs employee's home. It was recovered, but the incident led to major changes in how the VA handles data.",
+    "lesson": "Encrypt laptops, and question why sensitive data needs to leave the office at all.",
+    "source": { "label": "EPIC", "url": "https://epic.org/privacy/vatheft/" }
+  }
+]

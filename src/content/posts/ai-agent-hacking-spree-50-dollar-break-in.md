@@ -3,10 +3,10 @@ title: "The $50 break-in: what the AI agent hacking spree tells defenders"
 description: "An attacker reportedly pointed AI agents at 1,200 websites and got into more than 100 companies for about $5,000 in compute. The scary part isn't the AI. It's the economics."
 date: 2026-10-20
 pillar: ai-for-defenders
-draft: true
+draft: false
 ---
 
-This week Reuters reported on a campaign that should change how every security team thinks about its attack surface. According to [the reporting](https://winbuzzer.com/2026/10/20/hacker-used-ai-agents-to-breach-100-plus-companies-websites-xcxwbn/), a Chinese-speaking operator gave a set of AI agents a short list of preferred intrusion tactics, pointed them at e-commerce sites in the US, Canada, Australia and Japan starting September 25, and let them work largely on their own.
+This week Reuters reported on a campaign that should change how every security team thinks about its attack surface. According to [the report](https://winbuzzer.com/2026/10/20/hacker-used-ai-agents-to-breach-100-plus-companies-websites-xcxwbn/), a Chinese-speaking operator gave a set of AI agents a short list of preferred intrusion tactics, pointed them at e-commerce sites in the US, Canada, Australia and Japan starting September 25, and let them work largely on their own.
 
 The numbers, based on what researcher Snorre Fagerland observed through the attacker's own exposed infrastructure:
 
@@ -16,7 +16,7 @@ The numbers, based on what researcher Snorre Fagerland observed through the atta
 
 Those figures are one researcher's estimates, and we don't yet know how much data was taken. But even with generous error bars, the shape of the story is clear.
 
-## The interesting part isn't the AI. It's the patience.
+## The interesting part isn't the AI in this case. It's the patience.
 
 Look at how one of the intrusions reportedly worked. The agents found nothing wrong with the target's public application. A human attacker on a deadline might have moved on. The agents didn't. They went looking through records for related infrastructure, found an internet-facing control panel nobody was watching, and spent hours trying approaches until one gave them code execution on the server.
 
@@ -48,9 +48,9 @@ That's the asymmetry to watch. Attackers are using whatever tools work. Defender
 
 ## The bottom line
 
-The question boards and executives should ask after this story isn't "are we using AI for security?" It's: **if someone could afford to spend a full day attacking every system we have, which ones would fall?** That's no longer a hypothetical. It's a $50 line item.
+The question boards and executives should ask after this story isn't "are we using AI for security?" It's: **if someone could afford to spend a full day attacking every system we have, which ones would fall?** That's no longer a hypothetical. It's a $50 line item for the attacker.
 
-Answering it isn't a security-only exercise. The business knows which sites matter to customers, developers know what's running and who owns it, and security knows where attackers look. Put those three in a room for an afternoon and you'll find the forgotten panel before an agent does, without slowing anyone down.
+Determining an answer isn't a security-only exercise. The business knows which sites matter to customers, developers know what's running and who owns it, and security knows where attackers look. Put those three in a room for an afternoon and you'll find the forgotten panel before an agent does, without slowing anyone down.
 
 ## Sources
 

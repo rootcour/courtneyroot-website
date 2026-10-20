@@ -1,0 +1,191 @@
+---
+import Base from '../../../layouts/Base.astro';
+import AudiencePicker from '../../../components/AudiencePicker.astro';
+import { AUDIENCES, audiencePath, printPath, pdfPath, type Audience } from '../../../data/protect';
+
+// One page per audience: /resources/protect-yourself-online/ (adults, the default),
+// /students/ and /small-business/. Content lives in src/data/protect.ts.
+export function getStaticPaths() {
+  return AUDIENCES.map((a) => ({ params: { slug: a.slug || undefined }, props: { audience: a } }));
+}
+
+const { audience: g } = Astro.props as { audience: Audience };
+const isDefault = g.slug === '';
+const pageTitle = isDefault ? 'Protect Yourself Online' : `Protect Yourself Online: ${g.label}`;
+const storageKey = `protect-checkup-${g.slug || 'adults'}`;
+
+const sections = [
+  { id: 'breaches', label: 'Check for breaches' },
+  { id: 'checkup', label: 'Security checkup' },
+  { id: 'scams', label: 'Spot scams' },
+  { id: 'hacked', label: 'If you got hacked' },
+  { id: 'ai', label: 'Using AI safely' },
+  { id: 'print', label: 'Print and share' },
+];
+---
+<Base
+  title={pageTitle}
+  description={`A plain-English guide to protecting yourself online, for ${g.label.toLowerCase()}: check for breaches, a security checkup, spotting scams, what to do if you're hacked, and using AI safely.`}
+>
+  <div class="page-intro protect-intro">
+    <p class="resource-kind"><a href="/resources/">Resources</a></p>
+    <h1>{g.heading}</h1>
+    <p class="lede">{g.lede}</p>
+  </div>
+
+  <AudiencePicker current={g.slug} pathFor={audiencePath} />
+
+  <nav class="protect-toc" aria-label="On this page">
+    <ol>
+      {sections.map((s, i) => <li><a href={`#${s.id}`}><span>{i + 1}</span>{s.label}</a></li>)}
+    </ol>
+  </nav>
+
+  <div class="protect">
+    <section id="breaches" class="protect-section">
+      <h2><span class="step-num">1</span>Check if your information was exposed</h2>
+      <p>{g.breach.intro}</p>
+      <div class="tool-grid">
+        {g.breach.tools.map((t) => (
+          <div class="tool">
+            <h3>{t.href ? <a href={t.href}>{t.name}</a> : t.name}</h3>
+            <p>{t.body}</p>
+          </div>
+        ))}
+      </div>
+      <div class="callout">
+        <h3>{g.breach.foundTitle}</h3>
+        <ul>{g.breach.found.map((f) => <li>{f}</li>)}</ul>
+      </div>
+    </section>
+
+    <section id="checkup" class="protect-section">
+      <h2><span class="step-num">2</span>Your security checkup</h2>
+      <p>{g.checkup.intro}</p>
+      <p class="checkup-progress" aria-live="polite">
+        <span class="checkup-count" data-total={g.checkup.steps.length}>0 of {g.checkup.steps.length} done</span>
+        <span class="checkup-bar" aria-hidden="true"><span></span></span>
+      </p>
+      <ol class="checkup" data-storage-key={storageKey}>
+        {g.checkup.steps.map((s) => (
+          <li class="checkup-step">
+            <input type="checkbox" id={`step-${s.id}`} data-step={s.id} />
+            <div>
+              <label for={`step-${s.id}`}>{s.title}</label>
+              <p set:html={s.body} />
+              {s.links && (
+                <p class="checkup-links">
+                  {s.links.map((l) => <a href={l.href}>{l.label}</a>)}
+                </p>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+      <button type="button" class="checkup-reset textlink no-print">Clear my checkmarks</button>
+    </section>
+
+    <section id="scams" class="protect-section">
+      <h2><span class="step-num">3</span>Spot scams</h2>
+      <p>{g.scams.intro}</p>
+      <h3>Warning signs</h3>
+      <ul class="signs">{g.scams.signs.map((s) => <li>{s}</li>)}</ul>
+      <h3>Common scams right now</h3>
+      <div class="scam-grid">
+        {g.scams.examples.map((e) => (
+          <div class="scam">
+            <h4>{e.title}</h4>
+            <p>{e.body}</p>
+          </div>
+        ))}
+      </div>
+      <p class="rule">{g.scams.rule}</p>
+      <h3>Report it</h3>
+      <ul>{g.scams.report.map((r) => <li set:html={r} />)}</ul>
+    </section>
+
+    <section id="hacked" class="protect-section">
+      <h2><span class="step-num">4</span>If you think you got hacked</h2>
+      <p>{g.hacked.intro}</p>
+      <ol class="hacked-steps">{g.hacked.steps.map((s) => <li set:html={s} />)}</ol>
+      {g.hacked.callout && (
+        <div class="callout callout-urgent">
+          <h3>{g.hacked.callout.title}</h3>
+          <p>{g.hacked.callout.body}</p>
+          <ol>{g.hacked.callout.steps.map((s) => <li set:html={s} />)}</ol>
+        </div>
+      )}
+    </section>
+
+    <section id="ai" class="protect-section">
+      <h2><span class="step-num">5</span>Using AI chatbots safely</h2>
+      <p>{g.ai.intro}</p>
+      <div class="ai-list">
+        {g.ai.items.map((i) => (
+          <div>
+            <h3>{i.title}</h3>
+            <p set:html={i.body} />
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="print" class="protect-section">
+      <h2><span class="step-num">6</span>Print and share</h2>
+      <p>
+        The one-page version fits the checkup, the scam rules and the "if you got hacked" steps on a single sheet.
+        Print it for a parent, a classroom or the break room.
+      </p>
+      <p class="resource-links">
+        <a class="button" href={printPath(g.slug)}>Open the one-page version</a>
+        <a class="textlink" href={pdfPath(g.slug)}>Download PDF</a>
+      </p>
+      <h3>More trusted help</h3>
+      <ul class="more-links">{g.resources.map((r) => <li><a href={r.href}>{r.label}</a></li>)}</ul>
+    </section>
+
+    <p class="protect-note">
+      Last checked October 2026. Services and settings change, so if a link or menu name looks different, the
+      provider's help page has the current steps. I'm a security engineer sharing general guidance, not legal or
+      financial advice.
+    </p>
+  </div>
+</Base>
+
+<script>
+  // Saves checkup progress in this browser only. Nothing is sent anywhere.
+  const list = document.querySelector<HTMLElement>('.checkup');
+  const boxes = Array.from(document.querySelectorAll<HTMLInputElement>('.checkup input[type="checkbox"]'));
+  const count = document.querySelector<HTMLElement>('.checkup-count');
+  const bar = document.querySelector<HTMLElement>('.checkup-bar span');
+  const reset = document.querySelector<HTMLButtonElement>('.checkup-reset');
+  const key = list?.dataset.storageKey ?? 'protect-checkup';
+
+  function load(): string[] {
+    try { return JSON.parse(localStorage.getItem(key) ?? '[]'); } catch { return []; }
+  }
+  function save(ids: string[]) {
+    try { localStorage.setItem(key, JSON.stringify(ids)); } catch { /* storage unavailable: progress just isn't saved */ }
+  }
+  function update() {
+    const done = boxes.filter((b) => b.checked);
+    if (count) count.textContent = `${done.length} of ${boxes.length} done${done.length === boxes.length ? '. Nice work!' : ''}`;
+    if (bar) bar.style.width = `${(done.length / boxes.length) * 100}%`;
+    for (const b of boxes) b.closest('li')?.classList.toggle('is-done', b.checked);
+  }
+
+  const saved = load();
+  for (const b of boxes) {
+    b.checked = saved.includes(b.dataset.step ?? '');
+    b.addEventListener('change', () => {
+      save(boxes.filter((x) => x.checked).map((x) => x.dataset.step ?? ''));
+      update();
+    });
+  }
+  reset?.addEventListener('click', () => {
+    for (const b of boxes) b.checked = false;
+    save([]);
+    update();
+  });
+  update();
+</script>

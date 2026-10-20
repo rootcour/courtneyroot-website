@@ -3,7 +3,7 @@ title: "When AI guardrails block the defenders"
 description: "Twice this year, incident responders turned to AI for help mid-breach and the models refused. Here's why it happens and what security teams should set up before they need it."
 date: 2026-10-27
 pillar: ai-for-defenders
-draft: true
+draft: false
 ---
 
 Twice this year, a security team was in the middle of an incident, turned to an AI model for help, and got turned away.
@@ -14,11 +14,11 @@ This month it happened again. When attackers hit the AI coding tool OpenCode, th
 
 ## Why this happens
 
-I don't think the guardrails are wrong to exist. From the model's side, a request to analyze malware, reconstruct an exploit chain or explain how stolen credentials were used looks the same whether it comes from a defender or an attacker. The model can't see who's asking.
+The guardrails aren't wrong to exist. From the model's side, a request to analyze malware, reconstruct an exploit chain or explain how stolen credentials were used looks the same whether it comes from a defender or an attacker. The model can't see who's asking.
 
-The numbers show how strict the defaults are. When OpenAI announced a less-restricted cyber model for vetted defenders in August, [Axios reported](https://axios.com/2026/08/10/openai-gpt-astra-restrictions-safety-hacking-defenders) that in testing, OpenAI's standard model responded to 1.5% of advanced cybersecurity requests, like exploit-chain development and privilege escalation. The defender model responded to 95%.
+The numbers show how strict the standard models are. In August, OpenAI released a version of its model just for vetted security teams. According to [Axios](https://axios.com/2026/08/10/openai-gpt-astra-restrictions-safety-hacking-defenders), OpenAI tested both versions on advanced security tasks, like chaining exploits together or gaining higher-level access to a system. The standard model helped with only 1.5% of those requests and refused the rest. The version for vetted security teams helped with 95%.
 
-So the problem isn't really the guardrail. It's that defenders hit it at the worst possible moment, in the middle of an incident, with no time to sort out access.
+The problem isn't the guardrail. The problem is timing. Most security teams find out the model won’t help in the middle of an incident, when they’re under pressure and don’t have days to apply for vetted access or set up a different tool.
 
 ## What I'd set up now
 
@@ -34,7 +34,7 @@ So the problem isn't really the guardrail. It's that defenders hit it at the wor
 
 I usually write about governing what AI is allowed to do so attackers can't misuse it. This is the other side of the same question. Someone also has to decide what AI tools will do *for* your defenders, and that decision has to be made before the incident.
 
-I think that's a decision for business, legal, engineering and security together. Business and legal own the vendor contracts and data terms. Engineering owns the tooling. Security knows what the team will actually need at 2 a.m. Getting it settled ahead of time is how you keep customers protected and keep your response moving fast.
+That's a decision for business, legal, engineering and security together. Business and legal own the vendor contracts and data terms. Engineering owns the tooling. Security knows what the team will actually need at 2 a.m. Getting it settled ahead of time is how you keep customers protected and keep your response moving fast.
 
 ## Sources
 

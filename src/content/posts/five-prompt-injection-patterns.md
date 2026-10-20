@@ -3,7 +3,7 @@ title: "Five prompt injection patterns from 2026, and the control that stops eac
 description: "Prompt injection is no longer a demo. Here are five ways it showed up in real products this year, where the hidden instruction lived, and the control I'd put in place for each."
 date: 2026-11-24
 pillar: securing-ai
-draft: true
+draft: false
 ---
 
 Prompt injection used to be something people showed off in demos. In 2026 it started showing up in real products. I went through the incidents and research from this year and found that most of them fall into five patterns.
@@ -38,9 +38,9 @@ For each one I wrote down where the hidden instruction lived, what the AI did wi
 
 **Where it lives:** In a GitHub pull request title. In April, researchers Aonan Guan, Zhengyu Liu and Gavin Zhong showed that one injection in a PR title worked against three AI coding agents: Claude Code Security Review, Gemini CLI Action and GitHub Copilot Agent. They called it "Comment and Control."
 
-**What happens:** The agent read the title as an instruction and posted its own API key in a PR comment. It worked because the workflows these agents need often run with access to repository secrets.
+**What happens:** The agent read the title as an instruction and posted its own API key in a PR comment. The attack worked because the GitHub workflows these coding agents use often have access to repository secrets.
 
-**The control:** Don't give agents that process outside contributions access to secrets. Require a person to approve any commit, PR or comment an agent writes based on issue or PR content. Also, all three vendors fixed this without issuing a CVE, so your scanner won't flag it. I'd ask vendors directly how they track these fixes.
+**The control:** Coding agents that read pull requests or issues from outside contributors shouldn't have access to API keys or other secrets. A person should approve any commit, pull request or comment that a coding agent writes based on what it read in an issue or pull request. One more gap: Anthropic, Google and GitHub all fixed the "Comment and Control" flaw without issuing a CVE, so vulnerability scanners won't flag it. I'd ask each AI coding tool vendor directly how they track and announce prompt injection fixes.
 
 ## 5. Instructions that trick an agent into the software supply chain
 
@@ -48,7 +48,7 @@ For each one I wrote down where the hidden instruction lived, what the AI did wi
 
 **What happens:** The package was live for about an hour and ran on 15 real systems. One was a security scanner, which exposed credentials the agent then used to get into a security vendor's systems.
 
-**The control:** Agents shouldn't hold credentials that let them publish software. Use package allowlists for anything an agent installs. This is also a good reminder that an agent's mistakes can spread to people who never used it.
+**The control:** An AI agent should never hold the login or API token needed to publish packages to a public registry like PyPI. Without that token, a tricked agent can't push malicious code out to everyone else. For anything an agent installs, use an allowlist: a short, approved list of packages the agent is allowed to download, so the agent can't pull in a package it only heard about from someone's instructions. The PyPI incident is also a good reminder that an agent's mistakes can hurt people who never used the agent. In this case, 15 outside systems ran the malicious package within about an hour.
 
 ## What the five have in common
 

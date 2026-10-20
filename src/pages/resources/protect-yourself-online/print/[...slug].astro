@@ -1,0 +1,62 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import AudiencePicker from '../../../../components/AudiencePicker.astro';
+import { AUDIENCES, audiencePath, printPath, pdfPath, type Audience } from '../../../../data/protect';
+
+// One-page printable version of each audience's guide.
+export function getStaticPaths() {
+  return AUDIENCES.map((a) => ({ params: { slug: a.slug || undefined }, props: { audience: a } }));
+}
+
+const { audience: g } = Astro.props as { audience: Audience };
+---
+<Base title={`Protect Yourself Online, one-page version: ${g.label}`} description={`A printable one-page security checklist for ${g.label.toLowerCase()}.`}>
+  <div class="checklist-toolbar no-print">
+    <a class="back" href={audiencePath(g.slug)}>← Full guide</a>
+    <span class="checklist-actions">
+      <button type="button" class="button" id="print-page">Print</button>
+      <a class="textlink" href={pdfPath(g.slug)}>Download PDF</a>
+    </span>
+  </div>
+  <AudiencePicker current={g.slug} pathFor={printPath} />
+
+  <article class="checklist onepager">
+    <header class="checklist-head">
+      <h1>Protect Yourself Online</h1>
+      <p class="onepager-for">For {g.label.toLowerCase()}</p>
+    </header>
+
+    <section>
+      <h2><span class="part">Do these</span> Your security checkup</h2>
+      <ul class="checkboxes">
+        {g.checkup.steps.map((s) => <li><span class="box" aria-hidden="true"></span>{s.short}</li>)}
+      </ul>
+    </section>
+
+    <div class="print-cols">
+      <section>
+        <h2><span class="part">Watch for</span> Spot a scam</h2>
+        <ul class="onepager-list">{g.print.scamRules.map((r) => <li>{r}</li>)}</ul>
+      </section>
+      <section>
+        <h2><span class="part">If it happens</span> Got hacked?</h2>
+        <ol class="onepager-list">{g.print.hackedSteps.map((r) => <li>{r}</li>)}</ol>
+      </section>
+    </div>
+
+    <section>
+      <h2><span class="part">Keep handy</span> Where to get help</h2>
+      <dl class="onepager-links">
+        {g.print.links.map((l) => <div><dt>{l.label}</dt><dd>{l.href}</dd></div>)}
+      </dl>
+    </section>
+
+    <footer class="checklist-foot">
+      <p>Full guide: courtneyroot.dev{audiencePath(g.slug)} · Checked October 2026 · Free to share</p>
+    </footer>
+  </article>
+</Base>
+
+<script>
+  document.getElementById('print-page')?.addEventListener('click', () => window.print());
+</script>

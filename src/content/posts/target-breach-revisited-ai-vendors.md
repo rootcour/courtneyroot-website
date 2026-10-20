@@ -3,7 +3,7 @@ title: "Your AI vendor is the new HVAC contractor"
 description: "In 2013, attackers reached Target through a refrigeration vendor's login. In 2026, they reach you through an AI tool's API keys and OAuth tokens. Revisiting a breach I studied in grad school."
 date: 2026-11-10
 pillar: security-leadership
-draft: true
+draft: false
 ---
 
 A few years ago, as a Georgia Tech grad student, I wrote an analysis of the [2013 Target breach](/writing/diamond-model-target-breach/). The short version: attackers stole credentials from Fazio Mechanical, the refrigeration contractor that had access to Target's network for billing and project work. From there they moved through a flat network to the point-of-sale registers and skimmed card data from tens of millions of customers through the holiday season.
@@ -20,7 +20,7 @@ That's exactly how the [Salesloft Drift breach](https://securityaffairs.com/1816
 
 Notice the parallel. Target's attackers used a vendor's foothold to reach a more valuable system. Drift's attackers used a vendor's tokens to reach secrets that unlocked *other* systems. Same pattern, different plumbing.
 
-And it keeps happening. Just this month, attackers broke into [OpenCode's hosted console](https://techcrunch.com/2026/10/19/hackers-hit-ai-coding-tool-opencode-running-up-charges-on-users-ai-accounts/), where some developers stored API keys for their AI providers. Affected users woke up to unauthorized charges, some over $1,000, while the providers raced to revoke exposed keys. The company said 1.4% of console users were affected.
+And it keeps happening. Recently, attackers broke into [OpenCode's hosted console](https://techcrunch.com/2026/10/19/hackers-hit-ai-coding-tool-opencode-running-up-charges-on-users-ai-accounts/), where some developers stored API keys for their AI providers. Affected users woke up to unauthorized charges, some over $1,000, while the providers raced to revoke exposed keys. The company said 1.4% of console users were affected.
 
 ## Why my 2013 advice doesn't stretch far enough
 
