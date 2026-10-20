@@ -20,7 +20,7 @@ That's exactly how the [Salesloft Drift breach](https://securityaffairs.com/1816
 
 Notice the parallel. Target's attackers used a vendor's foothold to reach a more valuable system. Drift's attackers used a vendor's tokens to reach secrets that unlocked *other* systems. Same pattern, different plumbing.
 
-And it keeps happening. Just this month, attackers broke into [OpenCode's hosted console](https://techcrunch.com/2026/10/19/hackers-hit-ai-coding-tool-opencode-running-up-charges-on-users-ai-accounts/), where some developers stored API keys for their AI providers. Affected users woke up to unauthorized charges, some over $1,000, while the providers raced to revoke exposed keys. The company said 1.4% of console users were affected.
+And it keeps happening. Recently, attackers broke into [OpenCode's hosted console](https://techcrunch.com/2026/10/19/hackers-hit-ai-coding-tool-opencode-running-up-charges-on-users-ai-accounts/), where some developers stored API keys for their AI providers. Affected users woke up to unauthorized charges, some over $1,000, while the providers raced to revoke exposed keys. The company said 1.4% of console users were affected.
 
 ## Why my 2013 advice doesn't stretch far enough
 
