@@ -3,7 +3,7 @@ title: "The $50 break-in: what the AI agent hacking spree tells defenders"
 description: "An attacker reportedly pointed AI agents at 1,200 websites and got into more than 100 companies for about $5,000 in compute. The scary part isn't the AI. It's the economics."
 date: 2026-10-20
 pillar: ai-for-defenders
-draft: true
+draft: false
 ---
 
 This week Reuters reported on a campaign that should change how every security team thinks about its attack surface. According to [the report](https://winbuzzer.com/2026/10/20/hacker-used-ai-agents-to-breach-100-plus-companies-websites-xcxwbn/), a Chinese-speaking operator gave a set of AI agents a short list of preferred intrusion tactics, pointed them at e-commerce sites in the US, Canada, Australia and Japan starting September 25, and let them work largely on their own.
