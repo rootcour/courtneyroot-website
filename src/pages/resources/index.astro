@@ -8,6 +8,17 @@ const live = new Set((await getLivePosts()).map((p) => p.id));
 
 const resources = [
   {
+    title: 'Protect Yourself Online',
+    kind: 'Guide for everyone',
+    blurb:
+      'A plain-English guide for people who aren\'t security experts: check whether your information was in a breach, work through a short security checkup, spot today\'s scams, know what to do if you get hacked, and use AI chatbots safely. Versions for adults and families, students and teens, and small business owners, each with a one-page printout.',
+    links: [
+      { href: '/resources/protect-yourself-online/', label: 'Read the guide' },
+      { href: '/resources/protect-yourself-online/print/', label: 'One-page version' },
+    ],
+    post: null,
+  },
+  {
     title: 'Security incidents timeline',
     kind: 'Timeline',
     blurb:
