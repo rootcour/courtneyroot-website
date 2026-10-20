@@ -6,7 +6,7 @@ export const SITE = {
     'Security engineer writing about securing AI systems, using AI for defense, and translating security risk for leaders.',
   email: 'courtneyroot1@gmail.com',
   links: {
-   linkedin: 'https://www.linkedin.com/in/TODO',
+   linkedin: 'https://www.linkedin.com/in/courtney-root',
     github: 'https://github.com/rootcour',
   },
 };
