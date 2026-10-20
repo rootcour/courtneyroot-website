@@ -1,0 +1,174 @@
+---
+// The prompt injection game page.
+//
+// How the pieces fit together:
+//   - This file builds the page's HTML at build time (no secrets here; the
+//     whole website is public).
+//   - src/scripts/prompt-injection-game.js runs in the visitor's browser. It
+//     sends messages to the game server (a Cloudflare Worker) and shows replies.
+//   - The game server holds the passwords and talks to the AI. Its code is in
+//     the separate repo rootcour/prompt-injection-game.
+//   - Level text (names, lessons, post links) comes from src/data/game-levels.ts.
+import Base from '../../layouts/Base.astro';
+import { GAME } from '../../site';
+import { LEVELS, FINALE } from '../../data/game-levels';
+import { getLivePosts } from '../../lib/posts';
+import '../../styles/projects.css';
+
+// Only link to posts that are live right now. Scheduled posts get linked
+// automatically by the daily rebuild once their date arrives.
+const livePosts = new Map((await getLivePosts()).map((post) => [post.id, post]));
+
+// Until the Worker URL and Turnstile key are filled in (src/site.ts), show a
+// "coming soon" note instead of a game that can't connect.
+const configured =
+  !GAME.apiUrl.includes('YOUR-SUBDOMAIN') && !GAME.turnstileSiteKey.startsWith('REPLACE');
+---
+<Base
+  title="Prompt injection game"
+  description="Talk an AI into revealing its password. Each of the five levels adds one defense, and each win explains how you got past it."
+>
+  <div class="page-intro">
+    <p class="crumb"><a href="/projects/">Projects</a></p>
+    <h1>Prompt injection game</h1>
+    <p class="lede">
+      Each level has an AI guarding a password. Your job is to talk it into giving the password up. Every level adds
+      one more defense, and when you win, I explain the defense you just got past.
+    </p>
+    <p>
+      Prompt injection is when text an AI reads changes what the AI does. The game is a safe place to try it and see
+      why the usual defenses help but don't fully solve the problem.
+    </p>
+  </div>
+
+  {configured ? (
+    <section
+      id="game"
+      class="game"
+      data-api={GAME.apiUrl}
+      data-sitekey={GAME.turnstileSiteKey}
+      aria-label="Prompt injection game"
+    >
+      {/* Level picker. Buttons for levels the player hasn't reached are disabled by the script. */}
+      <ol class="level-tabs">
+        {LEVELS.map((level) => (
+          <li>
+            <button type="button" class="level-tab" data-level={level.number}>
+              <span class="level-tab-number">Level {level.number}</span>
+              <span class="level-tab-name">{level.name}</span>
+              <span class="level-tab-state" aria-hidden="true"></span>
+            </button>
+          </li>
+        ))}
+      </ol>
+
+      {/* One panel per level. The script shows the selected one and hides the rest. */}
+      {LEVELS.map((level) => {
+        const post = level.postSlug ? livePosts.get(level.postSlug) : undefined;
+        return (
+          <div class="level-panel" data-level-panel={level.number} hidden>
+            <h2>Level {level.number}: {level.name}</h2>
+            <p class="level-summary">{level.summary}</p>
+            <p class="defense-label">Defenses on this level:</p>
+            {level.defenses.length === 0 ? (
+              <p class="defense-none">None</p>
+            ) : (
+              <ul class="defense-list">
+                {level.defenses.map((defense) => <li>{defense}</li>)}
+              </ul>
+            )}
+
+            {/* Lesson: hidden until the player beats this level. */}
+            <div class="lesson" data-lesson={level.number} hidden>
+              <p class="lesson-head">You beat level {level.number}. Here's what you got past.</p>
+              <p>{level.lesson}</p>
+              {post && (
+                <p class="lesson-link">
+                  Read more: <a href={`/writing/${post.id}/`}>{post.data.title}</a>
+                </p>
+              )}
+              {level.number < LEVELS.length ? (
+                <button type="button" class="button next-level" data-next={level.number + 1}>
+                  Go to level {level.number + 1}
+                </button>
+              ) : (
+                <p class="finale">{FINALE}</p>
+              )}
+            </div>
+          </div>
+        );
+      })}
+
+      {/* Conversation. aria-live makes screen readers announce new replies. */}
+      <div class="chat-log" aria-live="polite" aria-label="Conversation"></div>
+
+      <form class="chat-form">
+        <label for="chat-input">Your message</label>
+        <textarea id="chat-input" name="message" rows="3" maxlength="400" required
+          placeholder="Ask the AI anything..."></textarea>
+        <div class="form-row">
+          <span class="char-count" aria-live="off">0 / 400</span>
+          <button type="submit" class="button">Send</button>
+        </div>
+      </form>
+
+      <form class="guess-form">
+        <label for="guess-input">Think you know the password?</label>
+        <div class="form-row">
+          <input id="guess-input" name="guess" type="text" maxlength="40" autocomplete="off" spellcheck="false"
+            required />
+          <button type="submit" class="button button-secondary">Guess</button>
+        </div>
+      </form>
+
+      {/* Status and error messages. role="status" is announced by screen readers. */}
+      <p class="game-status" role="status"></p>
+
+      {/* Cloudflare Turnstile draws its "are you human?" check here, only if it needs you to click. */}
+      <div class="turnstile-slot"></div>
+
+      <p class="game-reset">
+        <button type="button" class="linklike" data-reset>Reset my progress</button>
+      </p>
+    </section>
+  ) : (
+    <div class="empty-state">
+      <p>The game is almost ready. Check back soon.</p>
+    </div>
+  )}
+
+  <div class="prose">
+    <div class="section-head"><h2>How it works</h2></div>
+    <p>
+      The passwords live on a small server, not in this page, so you can't find them by viewing the page source.
+      Passwords change every day at midnight UTC. Each message you send goes through that level's defenses and a
+      small open model running on Cloudflare Workers AI.
+    </p>
+    <p>
+      The game doesn't save what you type. To keep the game free to run, the server counts messages with an
+      anonymous ID that resets every day, and there's a daily limit on messages and guesses. Please don't type
+      anything private.
+    </p>
+    <p>
+      The code is on GitHub: <a href={GAME.repoUrl}>rootcour/prompt-injection-game</a>.
+    </p>
+
+    <div class="section-head"><h2>Want more?</h2></div>
+    <p>
+      If you like this, try <a href="https://gandalf.lakera.ai/">Gandalf by Lakera</a> too. Gandalf inspired this game
+      and has more levels.
+    </p>
+  </div>
+
+  {configured && (
+    // Turnstile's script must load from Cloudflare (allowed in public/_headers).
+    // "render=explicit" means it waits for our script to ask for a check instead
+    // of drawing a widget on page load.
+    <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+  )}
+  <script>
+    // Astro bundles this into a separate .js file, which the strict
+    // Content-Security-Policy allows (no inline scripts).
+    import '../../scripts/prompt-injection-game.js';
+  </script>
+</Base>

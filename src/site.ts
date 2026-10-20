@@ -11,6 +11,19 @@ export const SITE = {
   },
 };
 
+// Prompt injection game (/projects/prompt-injection-game/).
+// The game page stays in a "coming soon" state until both values below are
+// filled in, so it's safe to upload the website files before the Worker is live.
+export const GAME = {
+  // Your Worker's URL from `npm run deploy` in the prompt-injection-game repo.
+  // No trailing slash. If you change this, also update connect-src in public/_headers.
+  apiUrl: 'https://prompt-injection-game.YOUR-SUBDOMAIN.workers.dev',
+  // Turnstile SITE key (the public one, safe to commit). The SECRET key goes
+  // only in the Worker, never here.
+  turnstileSiteKey: 'REPLACE_WITH_TURNSTILE_SITE_KEY',
+  repoUrl: 'https://github.com/rootcour/prompt-injection-game',
+};
+
 export const PILLARS: Record<string, { label: string; blurb: string }> = {
   'securing-ai': {
     label: 'Securing AI systems',

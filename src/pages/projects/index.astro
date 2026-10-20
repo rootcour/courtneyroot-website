@@ -1,0 +1,46 @@
+---
+// The /projects/ page: a list of things I've built.
+// To add a project, add an entry to `projects` below. Planned projects go in
+// `comingNext` until they're live.
+import Base from '../../layouts/Base.astro';
+import '../../styles/projects.css';
+
+const projects = [
+  {
+    title: 'Prompt injection game',
+    href: '/projects/prompt-injection-game/',
+    summary:
+      'Talk an AI into revealing its password. Each of the five levels adds one defense, and each win explains how you got past it.',
+    tags: ['Play in your browser', 'Securing AI'],
+  },
+];
+
+const comingNext = [
+  'A deliberately vulnerable AI agent lab for practicing attacks and defenses',
+  'A scanner that finds hidden instructions in web pages and documents',
+  'A checker that shows what an AI agent is allowed to do with its permissions',
+];
+---
+<Base title="Projects" description="Hands-on projects about AI security that you can try in your browser.">
+  <div class="page-intro">
+    <h1>Projects</h1>
+    <p class="lede">Hands-on projects about AI security. Each one comes with its code on GitHub and a write-up on what it teaches.</p>
+  </div>
+
+  <ul class="project-list">
+    {projects.map((project) => (
+      <li class="project-card">
+        <h2><a href={project.href}>{project.title}</a></h2>
+        <p>{project.summary}</p>
+        <ul class="project-tags">
+          {project.tags.map((tag) => <li>{tag}</li>)}
+        </ul>
+      </li>
+    ))}
+  </ul>
+
+  <div class="section-head"><h2>Coming next</h2></div>
+  <ul class="coming-next">
+    {comingNext.map((item) => <li>{item}</li>)}
+  </ul>
+</Base>
