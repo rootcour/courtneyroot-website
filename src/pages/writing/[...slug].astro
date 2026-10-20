@@ -13,9 +13,11 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { timeZone: 'UTC', year: 
 ---
 <Base title={post.data.title} description={post.data.description}>
   <article>
-    <p class="meta">
-      {fmt(post.data.date)}{post.data.updated && ` · updated ${fmt(post.data.updated)}`} · {PILLARS[post.data.pillar].label}
-    </p>
+    <div class="meta">
+      <time datetime={post.data.date.toISOString().slice(0, 10)}>{fmt(post.data.date)}</time>
+      {post.data.updated && <span>Updated {fmt(post.data.updated)}</span>}
+      {post.data.pillar !== 'general' && <span class="topic">{PILLARS[post.data.pillar].label}</span>}
+    </div>
     <h1>{post.data.title}</h1>
     {post.data.archived && (
       <div class="archive-note">
@@ -23,7 +25,7 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { timeZone: 'UTC', year: 
       </div>
     )}
     <Content />
+    <hr />
+    <p><a class="back" href="/writing/">Back to all writing</a></p>
   </article>
-  <hr />
-  <p><a href="/writing/">← All writing</a></p>
 </Base>

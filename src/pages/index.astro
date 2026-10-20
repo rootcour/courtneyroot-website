@@ -1,56 +1,86 @@
 ---
 import Base from '../layouts/Base.astro';
+import AgentDiagram from '../components/AgentDiagram.astro';
+import PostList from '../components/PostList.astro';
 import { getCollection } from 'astro:content';
 import { PILLARS } from '../site';
 
-const posts = (await getCollection('posts', ({ data }) => !data.draft && !data.archived))
+const published = await getCollection('posts', ({ data }) => !data.draft);
+const recent = published
+  .filter((p) => !p.data.archived)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
-const fmt = (d: Date) => d.toLocaleDateString('en-US', { timeZone: 'UTC', year: 'numeric', month: 'short', day: 'numeric' });
-const featured = ['securing-ai', 'ai-for-defenders', 'security-leadership'];
+
+// Until new posts are out, feature the archive pieces most relevant to today's AI-security themes.
+const featuredIds = ['diamond-model-target-breach', 'third-party-incident-response', 'should-you-pay-the-ransom'];
+const featured = featuredIds
+  .map((id) => published.find((p) => p.id === id))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const showRecent = recent.length > 0;
 ---
 <Base>
-  <p class="eyebrow">AI &amp; cloud security</p>
-  <h1>Securing software that makes its own decisions.</h1>
-  <p class="lede">
-    I'm a security engineer working where AI and cloud security meet. I write about what changes
-    when systems start acting on their own, and how to explain that risk to the people who fund the fix.
-  </p>
-  <ul class="proof">
-    <li>4 yrs cloud security engineering</li>
-    <li>Berkeley Haas MBA '27</li>
-    <li>WiCyS 2027 program reviewer</li>
-  </ul>
-  <a class="cta" href="/writing/">Read the writing</a>
-
-  <h2>What I write about</h2>
-  <div class="pillars">
-    {featured.map((k) => (
-      <div class="pillar">
-        <h3>{PILLARS[k].label}</h3>
-        <p>{PILLARS[k].blurb}</p>
+  <section class="hero">
+    <div>
+      <h1>Securing software that makes its own decisions.</h1>
+      <p class="lede">
+        I'm Courtney Root, a security engineer working where AI and cloud security meet. I write about what
+        changes when systems start acting on their own, and how to explain that risk to the people who fund the fix.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="/writing/">Read my writing</a>
+        <a class="textlink" href="/speaking/">Invite me to speak</a>
       </div>
-    ))}
+    </div>
+    <AgentDiagram />
+  </section>
+
+  <ul class="credentials" aria-label="Background">
+    <li><strong>4 years</strong> in cloud security engineering</li>
+    <li><strong>MS Cybersecurity</strong>, Georgia Tech</li>
+    <li><strong>MBA '27</strong>, Berkeley Haas</li>
+    <li><strong>Program reviewer</strong>, WiCyS 2027</li>
+  </ul>
+
+  <div class="section-head"><h2>What I write about</h2></div>
+  <div class="focus">
+    <div class="focus-item">
+      <svg class="focus-icon" viewBox="0 0 40 40" aria-hidden="true">
+        <rect class="fi-boundary" x="8" y="8" width="28" height="28" rx="4" />
+        <circle class="fi-dot" cx="22" cy="22" r="4" />
+        <path class="fi-threat" d="M2 38 L17 26" />
+      </svg>
+      <h3>{PILLARS['securing-ai'].label}</h3>
+      <p>{PILLARS['securing-ai'].blurb}</p>
+    </div>
+    <div class="focus-item">
+      <svg class="focus-icon" viewBox="0 0 40 40" aria-hidden="true">
+        <path class="fi-solid" d="M20 4 L34 9 V20 C34 28 28 34 20 37 C12 34 6 28 6 20 V9 Z" />
+        <path class="fi-threat" d="M13 20 L18 25 L27 15" />
+      </svg>
+      <h3>{PILLARS['ai-for-defenders'].label}</h3>
+      <p>{PILLARS['ai-for-defenders'].blurb}</p>
+    </div>
+    <div class="focus-item">
+      <svg class="focus-icon" viewBox="0 0 40 40" aria-hidden="true">
+        <path class="fi-solid" d="M6 34 H36" />
+        <path class="fi-solid" d="M10 34 V24 M18 34 V16 M26 34 V20" />
+        <path class="fi-threat" d="M32 34 V8" />
+      </svg>
+      <h3>{PILLARS['security-leadership'].label}</h3>
+      <p>{PILLARS['security-leadership'].blurb}</p>
+    </div>
   </div>
 
-  <h2>Latest</h2>
-  {posts.length === 0 ? (
-    <p class="muted">First posts are on the way.</p>
-  ) : (
-    <ul class="posts">
-      {posts.map((p) => (
-        <li>
-          <span class="meta">{fmt(p.data.date)} · {PILLARS[p.data.pillar].label}</span><br />
-          <a href={`/writing/${p.id}/`}>{p.data.title}</a>
-          <p>{p.data.description}</p>
-        </li>
-      ))}
-    </ul>
-  )}
+  <div class="section-head">
+    <h2>{showRecent ? 'Latest writing' : 'From the archive'}</h2>
+    <a href="/writing/">All writing</a>
+  </div>
+  <PostList posts={showRecent ? recent : featured} />
 
-  <h2>Now</h2>
-  <div class="now">
-    <!-- Update monthly. Keep it to 3 lines. -->
+  <div class="section-head"><h2>Now</h2></div>
+  <div class="now prose">
+    <!-- Update monthly. Keep it to three lines. -->
     <ul>
       <li>Reviewing talk submissions for WiCyS 2027.</li>
       <li>Thinking about permission models for AI agents with tool access.</li>

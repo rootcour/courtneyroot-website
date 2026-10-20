@@ -1,27 +1,35 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
 import { getCollection } from 'astro:content';
-import { PILLARS } from '../../site';
 
 const posts = (await getCollection('posts', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const fmt = (d: Date) => d.toLocaleDateString('en-US', { timeZone: 'UTC', year: 'numeric', month: 'short', day: 'numeric' });
+const current = posts.filter((p) => !p.data.archived);
+const archive = posts.filter((p) => p.data.archived);
 ---
 <Base title="Writing" description="Essays on securing AI systems, AI for defenders, and security leadership.">
-  <p class="eyebrow">Writing</p>
-  <h1>Notes from the intersection of AI and security</h1>
-  <p class="muted">Subscribe via <a href="/rss.xml">RSS</a>.</p>
-  {posts.length === 0 ? (
-    <p class="muted">First posts are on the way.</p>
+  <div class="page-intro">
+    <h1>Writing</h1>
+    <p class="lede">On securing AI systems, using AI for defense, and making security legible to the people who decide what gets funded.</p>
+    <p>Follow along with <a href="/rss.xml">RSS</a>.</p>
+  </div>
+
+  {current.length > 0 ? (
+    <PostList posts={current} />
   ) : (
-    <ul class="posts">
-      {posts.map((p) => (
-        <li>
-          <span class="meta">{fmt(p.data.date)} · {PILLARS[p.data.pillar].label}{p.data.archived && ' · archive'}</span><br />
-          <a href={`/writing/${p.id}/`}>{p.data.title}</a>
-          <p>{p.data.description}</p>
-        </li>
-      ))}
-    </ul>
+    <div class="empty-state prose">
+      <p>New essays on AI security start here soon. The first one is a threat model for AI agents with tool access.</p>
+    </div>
+  )}
+
+  {archive.length > 0 && (
+    <>
+      <div class="section-head">
+        <h2>Archive</h2>
+      </div>
+      <p class="prose">Case studies and essays from my Georgia Tech cybersecurity master's, lightly edited.</p>
+      <PostList posts={archive} />
+    </>
   )}
 </Base>

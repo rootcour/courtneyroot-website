@@ -1,10 +1,13 @@
 ---
+import '@fontsource-variable/schibsted-grotesk';
+import '@fontsource-variable/source-serif-4/opsz.css';
+import '@fontsource-variable/source-serif-4/opsz-italic.css';
 import '../styles/global.css';
 import { SITE } from '../site';
 
 interface Props { title?: string; description?: string; }
 const { title, description = SITE.description } = Astro.props;
-const fullTitle = title ? `${title} · ${SITE.name}` : SITE.title;
+const fullTitle = title ? `${title} | ${SITE.name}` : SITE.title;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const path = Astro.url.pathname;
 const nav = [
@@ -35,7 +38,10 @@ const nav = [
   <body>
     <header class="site-header">
       <div class="wrap">
-        <a class="brand" href="/">courtneyroot<span>.dev</span></a>
+        <a class="brand" href="/">
+          <img src="/headshot.webp" alt="" width="36" height="36" />
+          Courtney Root
+        </a>
         <nav aria-label="Main">
           <ul>
             {nav.map((n) => (
@@ -52,9 +58,12 @@ const nav = [
     </main>
     <footer class="site-footer">
       <div class="wrap">
-        <p>
-          <a href={SITE.links.linkedin}>LinkedIn</a> · <a href={SITE.links.github}>GitHub</a> · <a href="/rss.xml">RSS</a> · <a href={`mailto:${SITE.email}`}>Email</a>
-        </p>
+        <ul>
+          <li><a href={SITE.links.linkedin}>LinkedIn</a></li>
+          <li><a href={SITE.links.github}>GitHub</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+          <li><a href={`mailto:${SITE.email}`}>Email</a></li>
+        </ul>
         <p>Views are my own and do not represent my employer.</p>
       </div>
     </footer>

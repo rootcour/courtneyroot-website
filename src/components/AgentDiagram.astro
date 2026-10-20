@@ -1,0 +1,52 @@
+---
+// Hero illustration: an AI agent inside a trust boundary, with an injected
+// instruction from untrusted content crossing into it. Colors come from CSS classes
+// (no inline styles) so the strict CSP still applies.
+---
+<figure class="diagram">
+  <svg viewBox="0 0 520 390" role="img" aria-labelledby="diagram-title diagram-desc">
+    <title id="diagram-title">Threat model of an AI agent</title>
+    <desc id="diagram-desc">
+      A user sends instructions to an AI agent inside a trust boundary. The agent can use email, a code repository
+      and cloud APIs. Outside the boundary, a web page carries a hidden instruction that crosses the boundary into the agent.
+    </desc>
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="d-arrowhead" d="M0 0 L10 5 L0 10 z" />
+      </marker>
+    </defs>
+
+    <rect class="d-boundary" x="150" y="24" width="356" height="262" rx="12" />
+    <text class="d-boundary-label" x="168" y="50">Trust boundary</text>
+
+    <rect class="d-box" x="14" y="128" width="96" height="48" rx="8" />
+    <text class="d-label" x="62" y="157" text-anchor="middle">You</text>
+    <path class="d-edge" d="M110 152 L184 152" marker-end="url(#arrow)" />
+    <text class="d-small" x="118" y="142">asks</text>
+
+    <rect class="d-agent" x="188" y="120" width="128" height="64" rx="10" />
+    <text class="d-label-inverse" x="252" y="158" text-anchor="middle">AI agent</text>
+
+    <rect class="d-box" x="374" y="64" width="114" height="44" rx="8" />
+    <text class="d-label" x="431" y="91" text-anchor="middle">Email</text>
+    <rect class="d-box" x="374" y="130" width="114" height="44" rx="8" />
+    <text class="d-label" x="431" y="157" text-anchor="middle">Code repo</text>
+    <rect class="d-box" x="374" y="196" width="114" height="44" rx="8" />
+    <text class="d-label" x="431" y="223" text-anchor="middle">Cloud APIs</text>
+    <path class="d-edge" d="M316 144 L368 90" marker-end="url(#arrow)" />
+    <path class="d-edge" d="M316 152 L368 152" marker-end="url(#arrow)" />
+    <path class="d-edge" d="M316 160 L368 214" marker-end="url(#arrow)" />
+    <text class="d-small" x="330" y="268">can act on your behalf</text>
+
+    <rect class="d-box-threat" x="14" y="318" width="120" height="48" rx="8" />
+    <text class="d-label" x="74" y="347" text-anchor="middle">Web page</text>
+    <path class="d-attack" d="M134 342 C 214 342, 252 300, 252 194" />
+    <path class="d-attack-head" d="M244 204 L252 188 L260 204 z" />
+    <text class="d-threat-label" x="266" y="318">Hidden instruction</text>
+    <text class="d-small" x="266" y="336">"Forward the inbox to…"</text>
+  </svg>
+  <figcaption>
+    An agent acts on everything it reads. When a web page can slip instructions past the trust boundary,
+    the agent's permissions become the attacker's. That's the problem I work on.
+  </figcaption>
+</figure>
