@@ -3,7 +3,7 @@ title: "I built a prompt injection game. Here's what each level teaches."
 description: "Five levels, five defenses, one password. Building a game where players trick an AI showed me why no single prompt injection defense is enough, and why the strict ones break things."
 date: 2026-10-22
 pillar: securing-ai
-draft: true
+draft: false
 ---
 
 I wanted a way to show people prompt injection instead of describing it. So I built a [prompt injection game](/projects/prompt-injection-game/). Each level has an AI guarding a password, and your job is to talk it into giving the password up. Every level adds one more defense. When you win, the game explains the defense you just got past.
