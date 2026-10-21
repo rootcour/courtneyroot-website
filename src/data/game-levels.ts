@@ -7,7 +7,8 @@
 // postSlug: the blog post that explains this defense. The link only appears once
 // that post is live (draft: false and its date has arrived), so you can point at
 // a scheduled post now and the link turns on by itself after the daily rebuild.
-// Use null when no post covers the defense yet.
+// Use null when no post covers the defense yet. Levels 3 and 4 point to the
+// post about building the game, which explains every defense.
 
 export interface GameLevel {
   number: number;
@@ -51,7 +52,7 @@ export const LEVELS: GameLevel[] = [
       'or dashes between the letters. The filter only knows one way the password can look. A reversed word, a ' +
       'translation, a riddle or one letter per line all carry the same information past the filter. Keyword ' +
       'filters are cheap and worth having, but they catch the obvious leak, not the determined one.',
-    postSlug: null,
+    postSlug: 'building-a-prompt-injection-game',
   },
   {
     number: 4,
@@ -63,7 +64,7 @@ export const LEVELS: GameLevel[] = [
       'better than a keyword filter at spotting disguised answers. But the reviewer reads text you helped write, so ' +
       'the reviewer can be steered the same way the first AI was. A second model adds friction. A second model ' +
       "can't promise that untrusted text won't change its behavior.",
-    postSlug: null,
+    postSlug: 'building-a-prompt-injection-game',
   },
   {
     number: 5,
