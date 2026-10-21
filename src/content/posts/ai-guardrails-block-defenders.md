@@ -1,7 +1,7 @@
 ---
 title: "When AI guardrails block the defenders"
 description: "Twice this year, incident responders turned to AI for help mid-breach and the models refused. Here's why it happens and what security teams should set up before they need it."
-date: 2026-10-27
+date: 2026-10-14
 pillar: ai-for-defenders
 draft: false
 ---
